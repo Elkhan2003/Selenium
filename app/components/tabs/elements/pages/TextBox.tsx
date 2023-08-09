@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import scss from "./Style.module.scss";
+import scss from "./Elements.module.scss";
 
 const TextBox: FC = () => {
 	return (
