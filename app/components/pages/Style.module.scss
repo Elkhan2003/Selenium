@@ -14,10 +14,11 @@
 
 	.content {
 		display: flex;
-		gap: 30px;
 
 		.accordion {
-			max-width: 400px;
+			width: 100%;
+			height: auto;
+			max-width: 300px;
 
 			.AccordionSummary {
 				display: flex;
@@ -35,7 +36,10 @@
 		}
 
 		.tab__content {
+			margin: 30px;
 			width: 100%;
+			max-width: 1000px;
+			height: auto;
 		}
 	}
 }

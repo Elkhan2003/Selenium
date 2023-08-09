@@ -32,6 +32,8 @@ const TextBox: FC = () => {
 		setFormData({ ...draftData }); // Update formData with draftData
 	};
 
+	const hasResults = Object.values(formData).some((value) => value !== "");
+
 	return (
 		<>
 			<div className={scss.TextBox}>
@@ -107,16 +109,18 @@ const TextBox: FC = () => {
 					</Button>
 				</form>
 
-				<div className={scss.result}>
-					{formData.name && <p>Name: {formData.name}</p>}
-					{formData.email && <p>Email: {formData.email}</p>}
-					{formData.currentAddress && (
-						<p>Current Address: {formData.currentAddress}</p>
-					)}
-					{formData.permanentAddress && (
-						<p>Permanent Address: {formData.permanentAddress}</p>
-					)}
-				</div>
+				{hasResults && (
+					<div className={scss.result}>
+						{formData.name && <p>Name: {formData.name}</p>}
+						{formData.email && <p>Email: {formData.email}</p>}
+						{formData.currentAddress && (
+							<p>Current Address: {formData.currentAddress}</p>
+						)}
+						{formData.permanentAddress && (
+							<p>Permanent Address: {formData.permanentAddress}</p>
+						)}
+					</div>
+				)}
 			</div>
 		</>
 	);
