@@ -104,9 +104,11 @@ const TextBox: FC = () => {
 						</div>
 					</div>
 
-					<Button type="submit" variant="contained" size="medium">
-						Submit
-					</Button>
+					<div className={scss.button}>
+						<Button type="submit" variant="contained" size="medium">
+							Submit
+						</Button>
+					</div>
 				</form>
 
 				{hasResults && (
