@@ -7,7 +7,7 @@ import RadioButton from "@/app/components/tabs/elements/pages/RadioButton";
 import WebTables from "@/app/components/tabs/elements/pages/WebTables";
 import Buttons from "@/app/components/tabs/elements/pages/Buttons";
 import Links from "@/app/components/tabs/elements/pages/Links";
-import BrokenLinks_Images from "@/app/components/tabs/elements/pages/BrokenLinks_Images";
+import BrokenLinksImages from "@/app/components/tabs/elements/pages/BrokenLinksImages";
 import UploadAndDownload from "@/app/components/tabs/elements/pages/UploadAndDownload";
 import DynamicProperties from "@/app/components/tabs/elements/pages/DynamicProperties";
 
@@ -67,7 +67,7 @@ const tabs: TabsProps[] = [
 		id_link: "broken_page",
 		icon: <HtmlIcon />,
 		label: "Broken Links - Images",
-		page: <BrokenLinks_Images />
+		page: <BrokenLinksImages />
 	},
 	{
 		id: 8,

@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import scss from "./Header.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "@/app/images/logo.png";
+import logo from "@/app/assets/logo.png";
 
 const Header: FC = () => {
 	// const links = [
