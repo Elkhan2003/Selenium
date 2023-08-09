@@ -15,6 +15,7 @@ export const Element: FC = () => {
 							{tabs.map((tab, index) => (
 								<button
 									key={index + 1}
+									id={tab.id_link}
 									onClick={() => {
 										setActiveTab(tab.id);
 									}}
