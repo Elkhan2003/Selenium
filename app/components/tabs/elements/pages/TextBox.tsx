@@ -47,6 +47,7 @@ const TextBox: FC = () => {
 								variant="outlined"
 								size="small"
 								type="text"
+								id="name"
 								name="name"
 								label="Full Name"
 								value={draftData.name}
@@ -64,6 +65,7 @@ const TextBox: FC = () => {
 								variant="outlined"
 								size="small"
 								type="text"
+								id="email"
 								name="email"
 								label="name@example.com"
 								value={draftData.email}
@@ -79,6 +81,7 @@ const TextBox: FC = () => {
 						<div>
 							<TextField
 								variant="outlined"
+								id="currentAddress"
 								name="currentAddress"
 								label="Current Address"
 								multiline
@@ -95,6 +98,7 @@ const TextBox: FC = () => {
 						<div>
 							<TextField
 								variant="outlined"
+								id="permanentAddress"
 								name="permanentAddress"
 								label="Permanent Address"
 								multiline

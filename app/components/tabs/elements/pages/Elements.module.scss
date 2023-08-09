@@ -1,3 +1,4 @@
+// ! TextBox
 .TextBox {
 	display: flex;
 	flex-direction: column;
@@ -31,5 +32,22 @@
 		margin-top: 50px;
 		padding: 10px;
 		border: 1px solid #c9c9c9;
+	}
+}
+
+// ! RadioButton
+.RadioButton {
+	.disabled {
+		cursor: not-allowed !important;
+	}
+	.result {
+		margin-top: 10px;
+		display: flex;
+
+		span {
+			margin-left: 7px;
+			font-weight: 500;
+			color: #28a745;
+		}
 	}
 }
