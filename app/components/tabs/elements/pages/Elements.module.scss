@@ -87,6 +87,22 @@
 }
 
 // ! BrokenLinksImages
-.BrokenLinksImages{
+.BrokenLinksImages {
+	display: flex;
+	flex-direction: column;
 
+	gap: 10px;
+
+	.logo {
+		width: 500px;
+		height: auto;
+	}
+
+	a {
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
 }
