@@ -1,6 +1,7 @@
 import "./globals.scss";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import { TabsProvider } from "./providers/TabsProvider";
 import MaterialUiProvider from "./providers/MaterialUiProvider";
 
 const font = Montserrat({ subsets: ["latin"] });
@@ -18,7 +19,9 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={font.className}>
-				<MaterialUiProvider>{children}</MaterialUiProvider>
+				<TabsProvider>
+					<MaterialUiProvider>{children}</MaterialUiProvider>
+				</TabsProvider>
 			</body>
 		</html>
 	);

@@ -1,7 +1,11 @@
 import React, { FC } from "react";
 
 const TextBox: FC = () => {
-	return <>TextBox</>;
+	return (
+		<>
+			<p>TextBox</p>
+		</>
+	);
 };
 
 export default TextBox;

@@ -1,7 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC } from "react";
 
 const RadioButton: FC = () => {
-  return <>RadioButton</>;
+	return (
+		<>
+			<p>RadioButton</p>
+		</>
+	);
 };
 
 export default RadioButton;

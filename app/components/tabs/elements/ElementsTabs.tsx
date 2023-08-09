@@ -1,37 +1,10 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { motion } from "framer-motion";
 import scss from "../Tabs.module.scss";
-import { HtmlIcon } from "../../svgs";
-import TextBox from "./pages/TextBox";
-import CheckBox from "./pages/CheckBox";
-import RadioButton from "./pages/RadioButton";
-
-interface tabsProps {
-	icon: any;
-	label: any;
-	page?: any;
-}
-
-const tabs: tabsProps[] = [
-	{
-		icon: <HtmlIcon />,
-		label: "Text Box",
-		page: <TextBox />
-	},
-	{
-		icon: <HtmlIcon />,
-		label: "Check Box",
-		page: <CheckBox />
-	},
-	{
-		icon: <HtmlIcon />,
-		label: "Radio Button",
-		page: <RadioButton />
-	}
-];
+import { useTabs } from "@/app/hooks/useTabs";
 
 const ElementsTabs: FC = () => {
-	const [activeTab, setActiveTab] = useState<number>(tabs[0].label);
+	const { activeTab, setActiveTab, tabs } = useTabs();
 
 	return (
 		<>
@@ -43,15 +16,15 @@ const ElementsTabs: FC = () => {
 								<button
 									key={index + 1}
 									onClick={() => {
-										setActiveTab(tab.label);
+										setActiveTab(tab.id);
 									}}
 									className={
-										activeTab === tab.label
+										activeTab === tab.id
 											? `${scss.button} ${scss.active}`
 											: `${scss.button}`
 									}
 								>
-									{activeTab === tab.label && (
+									{activeTab === tab.id && (
 										<motion.div
 											layoutId="active-pill"
 											className={scss.active}
@@ -68,7 +41,7 @@ const ElementsTabs: FC = () => {
 						</div>
 						{tabs.map(
 							(tab, index) =>
-								activeTab === tab.label && (
+								activeTab === tab.id && (
 									<div key={index + 1} className={scss.tabs__content}>
 										{tab.page}
 									</div>
