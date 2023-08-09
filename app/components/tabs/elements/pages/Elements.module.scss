@@ -106,3 +106,16 @@
 		}
 	}
 }
+
+// ! UploadAndDownload
+.UploadAndDownload {
+	form {
+		margin-top: 20px;
+		display: flex;
+		flex-direction: column;
+
+		label{
+			margin-bottom: 10px;
+		}
+	}
+}
