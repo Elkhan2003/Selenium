@@ -7,7 +7,12 @@ const UploadAndDownload: FC = () => {
 	return (
 		<>
 			<div className={scss.UploadAndDownload}>
-				<a id="downloadButton" href="/public/logo.png" target="_blank" download>
+				<a
+					id="downloadButton"
+					href="https://i.ibb.co/Kw7F5BK/logo.png"
+					target="_blank"
+					download="logo.png"
+				>
 					<Button variant="contained" size="large" endIcon={<DownloadIcon />}>
 						Download
 					</Button>
