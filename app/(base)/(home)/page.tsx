@@ -1,10 +1,10 @@
 import React, { FC } from "react";
-import HomePage from "@/app/components/pages/HomePage";
+import SeleniumPage from "@/app/components/pages/SeleniumPage";
 
 const Home: FC = () => {
 	return (
 		<>
-			<HomePage />
+			<SeleniumPage />
 		</>
 	);
 };
