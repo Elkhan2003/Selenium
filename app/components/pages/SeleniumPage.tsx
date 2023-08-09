@@ -9,6 +9,7 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import scss from "./Style.module.scss";
 import ElementsTabs from "../tabs/elements/ElementsTabs";
+import { useTabs } from "@/app/hooks/useTabs";
 
 interface AccordionItem {
 	panel: string;
@@ -18,6 +19,7 @@ interface AccordionItem {
 
 const SeleniumPage: FC = () => {
 	const [expanded, setExpanded] = useState<string | false>(false);
+	const { activeTab, tabs } = useTabs();
 
 	const accordionData: AccordionItem[] = [
 		{
@@ -45,37 +47,46 @@ const SeleniumPage: FC = () => {
 	return (
 		<div className={scss.elements}>
 			<div className={scss.select}>
-				<p>Elements</p>
-			</div>
-			{accordionData.map((item) => (
-				<Accordion
-					className={scss.accordion}
-					key={item.panel}
-					expanded={expanded === item.panel}
-					onChange={handleChange(item.panel)}
-				>
-					<AccordionSummary
-						expandIcon={<ExpandMoreIcon />}
-						aria-controls={`${item.panel}bh-content`}
-						id={`${item.panel}bh-header`}
-					>
-						<Typography>{item.header}</Typography>
-					</AccordionSummary>
-					<AccordionDetails>
-						<Typography>{item.content}</Typography>
-					</AccordionDetails>
-				</Accordion>
-			))}
-
-			<div className={scss.show_tab}>
-				{/* {tabs.map(
+				{tabs.map(
 					(tab, index) =>
-						activeTab === tab.label && (
-							<div key={index + 1} className={scss.tabs__content}>
+						activeTab === tab.id && (
+							<p key={index + 1} className={scss.tab__content}>
+								{tab.label}
+							</p>
+						)
+				)}
+			</div>
+
+			<div className={scss.content}>
+				<div className={scss.accordion}>
+					{accordionData.map((item) => (
+						<Accordion
+							key={item.panel}
+							expanded={expanded === item.panel}
+							onChange={handleChange(item.panel)}
+						>
+							<AccordionSummary
+								expandIcon={<ExpandMoreIcon />}
+								aria-controls={`${item.panel}bh-content`}
+								id={`${item.panel}bh-header`}
+							>
+								<Typography>{item.header}</Typography>
+							</AccordionSummary>
+							<AccordionDetails>
+								<Typography>{item.content}</Typography>
+							</AccordionDetails>
+						</Accordion>
+					))}
+				</div>
+
+				{tabs.map(
+					(tab, index) =>
+						activeTab === tab.id && (
+							<div key={index + 1} className={scss.tab__content}>
 								{tab.page}
 							</div>
 						)
-				)} */}
+				)}
 			</div>
 		</div>
 	);

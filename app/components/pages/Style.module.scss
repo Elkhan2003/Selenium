@@ -12,11 +12,16 @@
 		}
 	}
 
-	.accordion {
-		max-width: 400px;
-	}
+	.content {
+		display: flex;
+		gap: 25px;
 
-	// .show_tab{
-		
-	// }
+		.accordion {
+			max-width: 400px;
+		}
+
+		// .tab__content{
+
+		// }
+	}
 }
