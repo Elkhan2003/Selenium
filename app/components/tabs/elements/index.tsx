@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import scss from "../Tabs.module.scss";
 import { useTabs } from "@/app/hooks/useTabs";
 
-const ElementsTabs: FC = () => {
+export const Element: FC = () => {
 	const { activeTab, setActiveTab, tabs } = useTabs();
 
 	return (
@@ -53,5 +53,3 @@ const ElementsTabs: FC = () => {
 		</>
 	);
 };
-
-export default ElementsTabs;

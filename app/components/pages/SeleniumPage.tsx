@@ -8,8 +8,8 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import scss from "./Style.module.scss";
-import ElementsTabs from "../tabs/elements/ElementsTabs";
 import { useTabs } from "@/app/hooks/useTabs";
+import { Element } from "../tabs/elements";
 import { BurgerIcon } from "../svgs";
 
 interface AccordionItem {
@@ -28,7 +28,7 @@ const SeleniumPage: FC = () => {
 			panel: "panel1",
 			icon: <BurgerIcon />,
 			header: "Elements",
-			content: <ElementsTabs />
+			content: <Element />
 		},
 		{
 			panel: "panel2",
