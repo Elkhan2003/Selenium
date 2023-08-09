@@ -5,47 +5,46 @@ import Link from "next/link";
 const Links: FC = () => {
 	const [resultText, setResultText] = useState("");
 
-	const handleCreatedClick = () => {
+	const handleLinkClick = (status: number, statusText: string) => {
 		setResultText(
-			"Link has responded with status <strong>201</strong> and status text <strong>Created</strong>"
+			`Link has responded with status <strong>${status}</strong> and status text <strong>${statusText}</strong>`
 		);
 	};
 
-	const handleNoContentClick = () => {
-		setResultText(
-			"Link has responded with status <strong>204</strong> and status text <strong>No Content</strong>"
-		);
-	};
-
-	const handleMovedClick = () => {
-		setResultText(
-			"Link has responded with status <strong>301</strong> and status text <strong>Moved Permanently</strong>"
-		);
-	};
-
-	const handleBadRequestClick = () => {
-		setResultText(
-			"Link has responded with status <strong>400</strong> and status text <strong>Bad Request</strong>"
-		);
-	};
-
-	const handleUnauthorizedClick = () => {
-		setResultText(
-			"Link has responded with status <strong>401</strong> and status text <strong>Unauthorized</strong>"
-		);
-	};
-
-	const handleForbiddenClick = () => {
-		setResultText(
-			"Link has responded with status <strong>403</strong> and status text <strong>Forbidden</strong>"
-		);
-	};
-
-	const handleNotFoundClick = () => {
-		setResultText(
-			"Link has responded with status <strong>404</strong> and status text <strong>Not Found</strong>"
-		);
-	};
+	const linkData = [
+		{ id: "created", text: "Created", status: 201, statusText: "Created" },
+		{
+			id: "no-content",
+			text: "No Content",
+			status: 204,
+			statusText: "No Content"
+		},
+		{
+			id: "moved",
+			text: "Moved",
+			status: 301,
+			statusText: "Moved Permanently"
+		},
+		{
+			id: "bad-request",
+			text: "Bad Request",
+			status: 400,
+			statusText: "Bad Request"
+		},
+		{
+			id: "unauthorized",
+			text: "Unauthorized",
+			status: 401,
+			statusText: "Unauthorized"
+		},
+		{
+			id: "forbidden",
+			text: "Forbidden",
+			status: 403,
+			statusText: "Forbidden"
+		},
+		{ id: "not-found", text: "Not Found", status: 404, statusText: "Not Found" }
+	];
 
 	return (
 		<>
@@ -63,65 +62,17 @@ const Links: FC = () => {
 						</Link>
 					</p>
 					<h3>Following links will send an api call</h3>
-					<p>
-						<a
-							id="created"
-							href="javascript:void(0)"
-							onClick={handleCreatedClick}
-						>
-							Created
-						</a>
-					</p>
-					<p>
-						<a
-							id="no-content"
-							href="javascript:void(0)"
-							onClick={handleNoContentClick}
-						>
-							No Content
-						</a>
-					</p>
-					<p>
-						<a id="moved" href="javascript:void(0)" onClick={handleMovedClick}>
-							Moved
-						</a>
-					</p>
-					<p>
-						<a
-							id="bad-request"
-							href="javascript:void(0)"
-							onClick={handleBadRequestClick}
-						>
-							Bad Request
-						</a>
-					</p>
-					<p>
-						<a
-							id="unauthorized"
-							href="javascript:void(0)"
-							onClick={handleUnauthorizedClick}
-						>
-							Unauthorized
-						</a>
-					</p>
-					<p>
-						<a
-							id="forbidden"
-							href="javascript:void(0)"
-							onClick={handleForbiddenClick}
-						>
-							Forbidden
-						</a>
-					</p>
-					<p>
-						<a
-							id="not-found"
-							href="javascript:void(0)"
-							onClick={handleNotFoundClick}
-						>
-							Not Found
-						</a>
-					</p>
+					{linkData.map((link) => (
+						<p key={link.id}>
+							<a
+								id={link.id}
+								href="javascript:void(0)"
+								onClick={() => handleLinkClick(link.status, link.statusText)}
+							>
+								{link.text}
+							</a>
+						</p>
+					))}
 				</div>
 			</div>
 			<div className={scss.result}>
