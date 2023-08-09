@@ -4,6 +4,11 @@ import { HtmlIcon } from "@/app/components/svgs";
 import TextBox from "@/app/components/tabs/elements/pages/TextBox";
 import CheckBox from "@/app/components/tabs/elements/pages/CheckBox";
 import RadioButton from "@/app/components/tabs/elements/pages/RadioButton";
+import WebTables from "../components/tabs/elements/pages/WebTables";
+import Buttons from "../components/tabs/elements/pages/Buttons";
+import Links from "../components/tabs/elements/pages/Links";
+import BrokenLinks_Images from "../components/tabs/elements/pages/BrokenLinks_Images";
+import DynamicProperties from "../components/tabs/elements/pages/DynamicProperties";
 
 interface TabsProps {
 	id: number;
@@ -30,6 +35,42 @@ const tabs: TabsProps[] = [
 		icon: <HtmlIcon />,
 		label: "Radio Button",
 		page: <RadioButton />
+	},
+	{
+		id: 4,
+		icon: <HtmlIcon />,
+		label: "Web Tables",
+		page: <WebTables />
+	},
+	{
+		id: 5,
+		icon: <HtmlIcon />,
+		label: "Buttons",
+		page: <Buttons />
+	},
+	{
+		id: 6,
+		icon: <HtmlIcon />,
+		label: "Links",
+		page: <Links />
+	},
+	{
+		id: 7,
+		icon: <HtmlIcon />,
+		label: "Broken Links - Images",
+		page: <BrokenLinks_Images />
+	},
+	{
+		id: 8,
+		icon: <HtmlIcon />,
+		label: "Upload and Download",
+		page: <WebTables />
+	},
+	{
+		id: 9,
+		icon: <HtmlIcon />,
+		label: "Dynamic Properties",
+		page: <DynamicProperties />
 	}
 ];
 

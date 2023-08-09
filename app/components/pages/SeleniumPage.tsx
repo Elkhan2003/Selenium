@@ -10,30 +10,35 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import scss from "./Style.module.scss";
 import ElementsTabs from "../tabs/elements/ElementsTabs";
 import { useTabs } from "@/app/hooks/useTabs";
+import { BurgerIcon } from "../svgs";
 
 interface AccordionItem {
 	panel: string;
+	icon?: any;
 	header: string;
 	content?: any;
 }
 
 const SeleniumPage: FC = () => {
-	const [expanded, setExpanded] = useState<string | false>(false);
+	const [expanded, setExpanded] = useState<string | false>("panel1");
 	const { activeTab, tabs } = useTabs();
 
 	const accordionData: AccordionItem[] = [
 		{
 			panel: "panel1",
+			icon: <BurgerIcon />,
 			header: "Elements",
 			content: <ElementsTabs />
 		},
 		{
 			panel: "panel2",
+			icon: <BurgerIcon />,
 			header: "Forms",
 			content: "lorem ipsum dolor sit amet, consectetur adip"
 		},
 		{
 			panel: "panel3",
+			icon: <BurgerIcon />,
 			header: "Alerts, Frame & Windows",
 			content: "Lorem ipsum dolor sit amet, consectetur adip"
 		}
@@ -66,10 +71,12 @@ const SeleniumPage: FC = () => {
 							onChange={handleChange(item.panel)}
 						>
 							<AccordionSummary
+								className={scss.AccordionSummary}
 								expandIcon={<ExpandMoreIcon />}
 								aria-controls={`${item.panel}bh-content`}
 								id={`${item.panel}bh-header`}
 							>
+								<span>{item.icon}</span>
 								<Typography>{item.header}</Typography>
 							</AccordionSummary>
 							<AccordionDetails>
