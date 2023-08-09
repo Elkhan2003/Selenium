@@ -251,13 +251,13 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
 					Nutrition
 				</Typography>
 			)}
-			{numSelected > 0 && (
+			{/* {numSelected > 0 && (
 				<Tooltip title="Delete">
 					<IconButton id="delete">
 						<DeleteIcon />
 					</IconButton>
 				</Tooltip>
-			)}
+			)} */}
 		</Toolbar>
 	);
 }
