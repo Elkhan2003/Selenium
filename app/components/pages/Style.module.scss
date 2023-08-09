@@ -14,7 +14,7 @@
 
 	.content {
 		display: flex;
-		gap: 25px;
+		gap: 30px;
 
 		.accordion {
 			max-width: 400px;
@@ -34,8 +34,8 @@
 			}
 		}
 
-		// .tab__content{
-
-		// }
+		.tab__content {
+			width: 100%;
+		}
 	}
 }

@@ -1,58 +1,123 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import scss from "./Elements.module.scss";
+import { TextField, Button } from "@mui/material";
 
 const TextBox: FC = () => {
+	const [formData, setFormData] = useState({
+		name: "",
+		email: "",
+		currentAddress: "",
+		permanentAddress: ""
+	});
+
+	const [draftData, setDraftData] = useState({
+		name: "",
+		email: "",
+		currentAddress: "",
+		permanentAddress: ""
+	});
+
+	const handleInputChange = (
+		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
+		const { name, value } = event.target;
+		setDraftData((prevDraftData) => ({
+			...prevDraftData,
+			[name]: value
+		}));
+	};
+
+	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		setFormData({ ...draftData }); // Update formData with draftData
+	};
+
 	return (
 		<>
-			<form className={scss.userForm}>
-				{/* ! user Name */}
-				<div className={scss.userNama}>
-					<div>
-						<label htmlFor="name">Full Name</label>
+			<div className={scss.TextBox}>
+				<form className={scss.userForm} onSubmit={handleSubmit}>
+					<div className={`${scss.userName} ${scss.userFormFlex}`}>
+						<div>
+							<label htmlFor="name">Full Name</label>
+						</div>
+						<div>
+							<TextField
+								variant="outlined"
+								size="small"
+								type="text"
+								name="name"
+								label="Full Name"
+								value={draftData.name}
+								onChange={handleInputChange}
+							/>
+						</div>
 					</div>
-					<div>
-						<input type="text" placeholder="Full Name" />
-					</div>
-				</div>
 
-				{/* ! user Email */}
-				<div className={scss.userEmail}>
-					<div>
-						<label htmlFor="email">Email</label>
+					<div className={`${scss.userEmail} ${scss.userFormFlex}`}>
+						<div>
+							<label htmlFor="email">Email</label>
+						</div>
+						<div>
+							<TextField
+								variant="outlined"
+								size="small"
+								type="text"
+								name="email"
+								label="name@example.com"
+								value={draftData.email}
+								onChange={handleInputChange}
+							/>
+						</div>
 					</div>
-					<div>
-						<input type="text" placeholder="name@example.com" />
-					</div>
-				</div>
 
-				{/* ! Current Address */}
-				<div className={scss.userEmail}>
-					<div>
-						<label htmlFor="CurrentAddress">Current Address</label>
+					<div className={`${scss.currentAddress} ${scss.userFormFlex}`}>
+						<div>
+							<label htmlFor="currentAddress">Current Address</label>
+						</div>
+						<div>
+							<TextField
+								variant="outlined"
+								name="currentAddress"
+								label="Current Address"
+								multiline
+								value={draftData.currentAddress}
+								onChange={handleInputChange}
+							/>
+						</div>
 					</div>
-					<div>
-						<textarea
-							placeholder="Current Address"
-							rows={5}
-							cols={20}
-						></textarea>
-					</div>
-				</div>
 
-				{/* ! Permanent Address */}
-				<div className={scss.userEmail}>
-					<div>
-						<label htmlFor="CurrentAddress">Permanent Address</label>
+					<div className={`${scss.permanentAddress} ${scss.userFormFlex}`}>
+						<div>
+							<label htmlFor="permanentAddress">Permanent Address</label>
+						</div>
+						<div>
+							<TextField
+								variant="outlined"
+								name="permanentAddress"
+								label="Permanent Address"
+								multiline
+								value={draftData.permanentAddress}
+								onChange={handleInputChange}
+							/>
+						</div>
 					</div>
-					<div>
-						<textarea
-							placeholder="Permanent Address"
-							rows={5}
-							cols={20}
-						></textarea>
-					</div>
+
+					<Button type="submit" variant="contained" size="medium">
+						Submit
+					</Button>
+				</form>
+
+				<div className={scss.result}>
+					{formData.name && <p>Name: {formData.name}</p>}
+					{formData.email && <p>Email: {formData.email}</p>}
+					{formData.currentAddress && (
+						<p>Current Address: {formData.currentAddress}</p>
+					)}
+					{formData.permanentAddress && (
+						<p>Permanent Address: {formData.permanentAddress}</p>
+					)}
 				</div>
-			</form>
+			</div>
 		</>
 	);
 };
