@@ -10,7 +10,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import scss from "./Style.module.scss";
 import { useTabs } from "@/app/hooks/useTabs";
 import { Element } from "../tabs/elements";
-import { BurgerIcon } from "../svgs";
+import { BurgerIcon, FormIcon, WindowsIcon } from "../svgs";
 
 interface AccordionItem {
 	panel: string;
@@ -32,13 +32,13 @@ const SeleniumPage: FC = () => {
 		},
 		{
 			panel: "panel2",
-			icon: <BurgerIcon />,
+			icon: <FormIcon />,
 			header: "Forms",
 			content: "lorem ipsum dolor sit amet, consectetur adip"
 		},
 		{
 			panel: "panel3",
-			icon: <BurgerIcon />,
+			icon: <WindowsIcon />,
 			header: "Alerts, Frame & Windows",
 			content: "Lorem ipsum dolor sit amet, consectetur adip"
 		}
