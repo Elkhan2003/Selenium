@@ -10,6 +10,7 @@ import Links from "@/app/components/tabs/elements/pages/Links";
 import BrokenLinksImages from "@/app/components/tabs/elements/pages/BrokenLinksImages";
 import UploadAndDownload from "@/app/components/tabs/elements/pages/UploadAndDownload";
 import DynamicProperties from "@/app/components/tabs/elements/pages/DynamicProperties";
+import PracticeForm from "../components/tabs/forms/pages/PracticeForm";
 
 interface Tab {
 	id: number;
@@ -92,11 +93,11 @@ const tabs: TabsProps = {
 	],
 	forms: [
 		{
-			id: 1,
-			id_link: "dynamicProperties_page",
+			id: 10,
+			id_link: "practiceForm_page",
 			icon: <HtmlIcon />,
-			label: "Dynamic Properties",
-			page: <DynamicProperties />
+			label: "Practice Form",
+			page: <PracticeForm />
 		}
 	]
 };

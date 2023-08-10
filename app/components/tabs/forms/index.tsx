@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import scss from "../Tabs.module.scss";
 import { useTabs } from "@/app/hooks/useTabs";
 
-export const Elements: FC = () => {
+export const Forms: FC = () => {
 	const { activeTab, setActiveTab, tabs } = useTabs();
 
 	return (
@@ -12,7 +12,7 @@ export const Elements: FC = () => {
 				<div className={scss.content}>
 					<div className={scss.tabs}>
 						<div className={scss.buttons}>
-							{tabs.elements.map((tab, index) => (
+							{tabs.forms.map((tab, index) => (
 								<button
 									key={index + 1}
 									id={tab.id_link}
