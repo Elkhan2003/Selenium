@@ -52,7 +52,7 @@ const SeleniumPage: FC = () => {
 	return (
 		<div className={scss.elements}>
 			<div className={scss.select}>
-				{tabs.map(
+				{tabs.elements.map(
 					(tab, index) =>
 						activeTab === tab.id && (
 							<p key={index + 1} className={scss.tab__content}>
@@ -86,7 +86,7 @@ const SeleniumPage: FC = () => {
 					))}
 				</div>
 
-				{tabs.map(
+				{tabs.elements.map(
 					(tab, index) =>
 						activeTab === tab.id && (
 							<div key={index + 1} className={scss.tab__content}>

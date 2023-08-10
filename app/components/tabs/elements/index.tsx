@@ -12,7 +12,7 @@ export const Element: FC = () => {
 				<div className={scss.content}>
 					<div className={scss.tabs}>
 						<div className={scss.buttons}>
-							{tabs.map((tab, index) => (
+							{tabs.elements.map((tab, index) => (
 								<button
 									key={index + 1}
 									id={tab.id_link}
