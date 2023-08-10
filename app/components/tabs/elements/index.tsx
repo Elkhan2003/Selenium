@@ -40,14 +40,6 @@ export const Element: FC = () => {
 								</button>
 							))}
 						</div>
-						{/* {tabs.map(
-							(tab, index) =>
-								activeTab === tab.id && (
-									<div key={index + 1} className={scss.tabs__content}>
-										{tab.page}
-									</div>
-								)
-						)} */}
 					</div>
 				</div>
 			</div>
