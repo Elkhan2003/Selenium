@@ -91,6 +91,7 @@ const tabs: TabsProps = {
 			page: <DynamicProperties />
 		}
 	],
+
 	forms: [
 		{
 			id: 10,

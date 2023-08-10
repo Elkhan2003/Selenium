@@ -1,7 +1,12 @@
-import React, { FC } from 'react';
+import React, { FC } from "react";
+import scss from "./Forms.module.scss";
 
 const PracticeForm: FC = () => {
-  return <>PracticeForm</>;
+	return (
+		<>
+			<div className={scss.PracticeForm}>PracticeForm</div>
+		</>
+	);
 };
 
 export default PracticeForm;
