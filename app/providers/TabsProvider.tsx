@@ -136,7 +136,7 @@ export const TabsProvider: FC<TabsProviderProps> = ({ children }) => {
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
-			localStorage.setItem("activeTab", String(activeTab));
+			localStorage.setItem("activeTab", activeTab.toString());
 		}
 	}, [activeTab]);
 
