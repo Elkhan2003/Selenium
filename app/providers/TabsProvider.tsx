@@ -127,12 +127,11 @@ export const TabsContext = createContext<TabsContextType>({
 });
 
 export const TabsProvider: FC<TabsProviderProps> = ({ children }) => {
-	const storedActiveTab = localStorage.getItem("activeTab");
-	const initialActiveTab = storedActiveTab
-		? parseInt(storedActiveTab)
-		: tabs.elements[0].id;
+	const storedActiveTab = Number(localStorage.getItem("activeTab"));
 
-	const [activeTab, setActiveTab] = useState<number>(initialActiveTab);
+	const [activeTab, setActiveTab] = useState<number>(
+		storedActiveTab || tabs.elements[0].id
+	);
 
 	useEffect(() => {
 		localStorage.setItem("activeTab", String(activeTab));
