@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import {
 	Accordion,
 	AccordionDetails,
@@ -21,8 +21,15 @@ interface AccordionItem {
 }
 
 const SeleniumPage: FC = () => {
-	const [expanded, setExpanded] = useState<string | false>("panel1");
+	const [mounted, setMounted] = useState(false);
+	const storedExpanded = localStorage.getItem("expanded");
+	const [expanded, setExpanded] = useState<string | false>(
+		storedExpanded || "panel1"
+	);
 	const { activeTab, tabs } = useTabs();
+	useEffect(() => {
+		localStorage.setItem("expanded", String(expanded));
+	}, [expanded]);
 
 	const accordionData: AccordionItem[] = [
 		{
@@ -49,6 +56,13 @@ const SeleniumPage: FC = () => {
 		(panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
 			setExpanded(isExpanded ? panel : false);
 		};
+
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+	if (!mounted) {
+		return null;
+	}
 
 	return (
 		<div className={scss.elements}>
