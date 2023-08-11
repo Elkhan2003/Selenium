@@ -127,25 +127,18 @@ export const TabsContext = createContext<TabsContextType>({
 });
 
 export const TabsProvider: FC<TabsProviderProps> = ({ children }) => {
-	const [mounted, setMounted] = useState(false);
-	const storedActiveTab = process.browser
-		? Number(localStorage.getItem("activeTab"))
-		: null;
-	const [activeTab, setActiveTab] = useState<number>(
-		storedActiveTab || tabs.elements[0].id
-	);
+	const storedActiveTab = localStorage.getItem("activeTab");
+	const initialActiveTab = storedActiveTab
+		? parseInt(storedActiveTab)
+		: tabs.elements[0].id;
+
+	const [activeTab, setActiveTab] = useState<number>(initialActiveTab);
+
 	useEffect(() => {
-		localStorage.setItem("activeTab", String(activeTab));
+		localStorage.setItem("activeTab", activeTab.toString());
 	}, [activeTab]);
 
 	const value = useMemo(() => ({ activeTab, setActiveTab, tabs }), [activeTab]);
-
-	useEffect(() => {
-		setMounted(true);
-	}, []);
-	if (!mounted) {
-		return null;
-	}
 
 	return <TabsContext.Provider value={value}>{children}</TabsContext.Provider>;
 };
