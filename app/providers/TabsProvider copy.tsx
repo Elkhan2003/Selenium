@@ -128,9 +128,7 @@ export const TabsContext = createContext<TabsContextType>({
 
 export const TabsProvider: FC<TabsProviderProps> = ({ children }) => {
 	const [mounted, setMounted] = useState(false);
-	const storedActiveTab = process.browser
-		? Number(localStorage.getItem("activeTab"))
-		: null;
+	const storedActiveTab = Number(localStorage.getItem("activeTab"));
 	const [activeTab, setActiveTab] = useState<number>(
 		storedActiveTab || tabs.elements[0].id
 	);
