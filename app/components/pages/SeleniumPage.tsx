@@ -25,18 +25,17 @@ const SeleniumPage: FC = () => {
 	useEffect(() => {
 		setMounted(true);
 	}, []);
-	if (!mounted) {
-		return null;
-	}
 	const storedExpanded = localStorage.getItem("expanded");
 	const [expanded, setExpanded] = useState<string | false>(
 		storedExpanded || "panel1"
 	);
 	const { activeTab, tabs } = useTabs();
-
 	useEffect(() => {
 		localStorage.setItem("expanded", String(expanded));
 	}, [expanded]);
+	if (!mounted) {
+		return null;
+	}
 
 	const accordionData: AccordionItem[] = [
 		{
