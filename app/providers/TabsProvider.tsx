@@ -131,15 +131,13 @@ export const TabsProvider: FC<TabsProviderProps> = ({ children }) => {
 		? localStorage.getItem("activeTab")
 		: null;
 	const initialActiveTab = storedActiveTab
-		? parseInt(storedActiveTab)
+		? Number(storedActiveTab)
 		: tabs.elements[0].id;
 
 	const [activeTab, setActiveTab] = useState<number>(initialActiveTab);
 
 	useEffect(() => {
-		if (typeof window !== "undefined") {
-			localStorage.setItem("activeTab", activeTab.toString());
-		}
+		localStorage.setItem("activeTab", String(activeTab));
 	}, [activeTab]);
 
 	const value = useMemo(() => ({ activeTab, setActiveTab, tabs }), [activeTab]);
