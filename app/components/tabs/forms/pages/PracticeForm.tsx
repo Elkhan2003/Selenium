@@ -20,7 +20,7 @@ const PracticeForm: FC = () => {
 								Name
 							</label>
 						</div>
-						<div className={`${scss.name__inputs} ${scss.userFormFlex}`}>
+						<div className={`${scss.name__inputs} ${scss.userFormWidth}`}>
 							<TextField
 								fullWidth
 								variant="outlined"
