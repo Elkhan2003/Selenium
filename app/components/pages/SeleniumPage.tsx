@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import {
 	Accordion,
 	AccordionDetails,
@@ -21,8 +21,15 @@ interface AccordionItem {
 }
 
 const SeleniumPage: FC = () => {
-	const [expanded, setExpanded] = useState<string | false>("panel1");
+	const storedExpanded = localStorage.getItem("expanded");
+	const [expanded, setExpanded] = useState<string | false>(
+		storedExpanded || "panel1"
+	);
 	const { activeTab, tabs } = useTabs();
+
+	useEffect(() => {
+		localStorage.setItem("expanded", String(expanded));
+	}, [expanded]);
 
 	const accordionData: AccordionItem[] = [
 		{
