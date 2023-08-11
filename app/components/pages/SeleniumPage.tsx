@@ -21,6 +21,13 @@ interface AccordionItem {
 }
 
 const SeleniumPage: FC = () => {
+	const [mounted, setMounted] = useState(false);
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+	if (!mounted) {
+		return null;
+	}
 	const storedExpanded = localStorage.getItem("expanded");
 	const [expanded, setExpanded] = useState<string | false>(
 		storedExpanded || "panel1"
@@ -28,9 +35,7 @@ const SeleniumPage: FC = () => {
 	const { activeTab, tabs } = useTabs();
 
 	useEffect(() => {
-		if (typeof window !== "undefined") {
-			localStorage.setItem("expanded", String(expanded));
-		}
+		localStorage.setItem("expanded", String(expanded));
 	}, [expanded]);
 
 	const accordionData: AccordionItem[] = [
