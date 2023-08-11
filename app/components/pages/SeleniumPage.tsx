@@ -22,9 +22,6 @@ interface AccordionItem {
 
 const SeleniumPage: FC = () => {
 	const [mounted, setMounted] = useState(false);
-	useEffect(() => {
-		setMounted(true);
-	}, []);
 	const storedExpanded = localStorage.getItem("expanded");
 	const [expanded, setExpanded] = useState<string | false>(
 		storedExpanded || "panel1"
@@ -33,6 +30,10 @@ const SeleniumPage: FC = () => {
 	useEffect(() => {
 		localStorage.setItem("expanded", String(expanded));
 	}, [expanded]);
+
+	useEffect(() => {
+		setMounted(true);
+	}, []);
 	if (!mounted) {
 		return null;
 	}

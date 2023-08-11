@@ -128,9 +128,6 @@ export const TabsContext = createContext<TabsContextType>({
 
 export const TabsProvider: FC<TabsProviderProps> = ({ children }) => {
 	const [mounted, setMounted] = useState(false);
-	useEffect(() => {
-		setMounted(true);
-	}, []);
 	const storedActiveTab = Number(localStorage.getItem("activeTab"));
 	const [activeTab, setActiveTab] = useState<number>(
 		storedActiveTab || tabs.elements[0].id
@@ -138,6 +135,10 @@ export const TabsProvider: FC<TabsProviderProps> = ({ children }) => {
 	useEffect(() => {
 		localStorage.setItem("activeTab", String(activeTab));
 	}, [activeTab]);
+
+	useEffect(() => {
+		setMounted(true);
+	}, []);
 	if (!mounted) {
 		return null;
 	}
