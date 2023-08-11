@@ -1,3 +1,89 @@
 .PracticeForm {
 	display: flex;
+	flex-direction: column;
+
+	.form {
+		.userFormFlex {
+			margin: 12px 0;
+		}
+
+		.label {
+			width: 100%;
+			max-width: 150px;
+		}
+
+		.userName {
+			display: flex;
+			justify-content: space-between;
+			.name__inputs {
+				display: flex;
+				justify-content: space-between;
+				width: 100%;
+				max-width: 700px;
+				gap: 100px;
+
+				@media (max-width: 1150px) {
+					gap: 30px;
+				}
+			}
+		}
+
+		.userEmail {
+			display: flex;
+			justify-content: space-between;
+			.email__inputs {
+				width: 100%;
+				max-width: 700px;
+
+				input {
+					width: 100% !important;
+				}
+			}
+		}
+
+		.userGender {
+			display: flex;
+			justify-content: space-between;
+			.radio__buttons {
+				width: 100%;
+				max-width: 700px;
+			}
+		}
+
+		.userMobile {
+			display: flex;
+			justify-content: space-between;
+			.mobile__inputs {
+				width: 100%;
+				max-width: 700px;
+			}
+		}
+
+		.userDateOfBirth {
+			display: flex;
+			justify-content: space-between;
+			.dateOfBirth__inputs {
+				width: 100%;
+				max-width: 700px;
+			}
+		}
+
+		.subjects {
+			display: flex;
+			justify-content: space-between;
+			.subjects__inputs {
+				width: 100%;
+				max-width: 700px;
+			}
+		}
+
+		.userHobbies {
+			display: flex;
+			justify-content: space-between;
+			.radio__buttons {
+				width: 100%;
+				max-width: 700px;
+			}
+		}
+	}
 }
