@@ -127,7 +127,9 @@ export const TabsContext = createContext<TabsContextType>({
 });
 
 export const TabsProvider: FC<TabsProviderProps> = ({ children }) => {
-	const storedActiveTab = localStorage.getItem("activeTab");
+	const storedActiveTab = process.browser
+		? localStorage.getItem("activeTab")
+		: null;
 	const initialActiveTab = storedActiveTab
 		? parseInt(storedActiveTab)
 		: tabs.elements[0].id;
