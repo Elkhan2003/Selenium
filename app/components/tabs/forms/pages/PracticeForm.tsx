@@ -20,7 +20,7 @@ const PracticeForm: FC = () => {
 								Name
 							</label>
 						</div>
-						<div className={scss.name__inputs}>
+						<div className={`${scss.name__inputs} ${scss.userFormFlex}`}>
 							<TextField
 								fullWidth
 								variant="outlined"
@@ -48,7 +48,7 @@ const PracticeForm: FC = () => {
 								Email
 							</label>
 						</div>
-						<div className={scss.email__inputs}>
+						<div className={`${scss.email__inputs} ${scss.userFormWidth}`}>
 							<TextField
 								fullWidth
 								variant="outlined"
@@ -67,7 +67,7 @@ const PracticeForm: FC = () => {
 								Gender
 							</label>
 						</div>
-						<div className={scss.radio__buttons}>
+						<div className={`${scss.radio__buttons} ${scss.userFormWidth}`}>
 							<RadioGroup
 								row
 								aria-labelledby="demo-row-radio-buttons-group-label"
@@ -101,7 +101,7 @@ const PracticeForm: FC = () => {
 								Mobile <span>(10 Digits)</span>
 							</label>
 						</div>
-						<div className={scss.mobile__inputs}>
+						<div className={`${scss.mobile__inputs} ${scss.userFormWidth}`}>
 							<TextField
 								fullWidth
 								variant="outlined"
@@ -120,7 +120,9 @@ const PracticeForm: FC = () => {
 								Date of Birth
 							</label>
 						</div>
-						<div className={scss.dateOfBirth__inputs}>
+						<div
+							className={`${scss.dateOfBirth__inputs} ${scss.userFormWidth}`}
+						>
 							<TextField
 								variant="outlined"
 								size="small"
@@ -143,7 +145,7 @@ const PracticeForm: FC = () => {
 								Subjects
 							</label>
 						</div>
-						<div className={scss.subjects__inputs}>
+						<div className={`${scss.subjects__inputs} ${scss.userFormWidth}`}>
 							<TextField
 								fullWidth
 								variant="outlined"
@@ -162,7 +164,7 @@ const PracticeForm: FC = () => {
 								Hobbies
 							</label>
 						</div>
-						<div className={scss.radio__buttons}>
+						<div className={`${scss.radio__buttons} ${scss.userFormWidth}`}>
 							<RadioGroup
 								row
 								aria-labelledby="demo-row-radio-buttons-group-label"
