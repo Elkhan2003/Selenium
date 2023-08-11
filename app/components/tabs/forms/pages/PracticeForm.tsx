@@ -1,9 +1,16 @@
 import React, { FC, useState } from "react";
 import scss from "./Forms.module.scss";
-import { FormControlLabel, Radio, RadioGroup, TextField } from "@mui/material";
+import {
+	FormControlLabel,
+	InputBase,
+	Paper,
+	Radio,
+	RadioGroup,
+	TextField
+} from "@mui/material";
 
 const PracticeForm: FC = () => {
-	const [dateOfBirth, setDateOfBirth] = useState("11 Aug 2023"); // Начальная дата
+	const [dateOfBirth, setDateOfBirth] = useState("2003-10-14"); // Начальная дата
 
 	const handleDateChange = (event: any) => {
 		setDateOfBirth(event.target.value);
@@ -126,11 +133,11 @@ const PracticeForm: FC = () => {
 							<TextField
 								variant="outlined"
 								size="small"
-								type="text"
+								type="date"
 								id="dateOfBirthInput"
 								name="dateOfBirth"
 								label="Date Of Birth"
-								value={dateOfBirth}
+								defaultValue={dateOfBirth}
 								onChange={handleDateChange}
 								InputLabelProps={{
 									shrink: true
@@ -191,6 +198,8 @@ const PracticeForm: FC = () => {
 							</RadioGroup>
 						</div>
 					</div>
+
+						
 				</form>
 			</div>
 		</>
