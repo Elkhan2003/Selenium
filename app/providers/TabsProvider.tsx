@@ -136,14 +136,14 @@ export const TabsProvider: FC<TabsProviderProps> = ({ children }) => {
 		localStorage.setItem("activeTab", String(activeTab));
 	}, [activeTab]);
 
+	const value = useMemo(() => ({ activeTab, setActiveTab, tabs }), [activeTab]);
+
 	useEffect(() => {
 		setMounted(true);
 	}, []);
 	if (!mounted) {
 		return null;
 	}
-
-	const value = useMemo(() => ({ activeTab, setActiveTab, tabs }), [activeTab]);
 
 	return <TabsContext.Provider value={value}>{children}</TabsContext.Provider>;
 };

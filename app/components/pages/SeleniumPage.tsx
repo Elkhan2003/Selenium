@@ -31,13 +31,6 @@ const SeleniumPage: FC = () => {
 		localStorage.setItem("expanded", String(expanded));
 	}, [expanded]);
 
-	useEffect(() => {
-		setMounted(true);
-	}, []);
-	if (!mounted) {
-		return null;
-	}
-
 	const accordionData: AccordionItem[] = [
 		{
 			panel: "panel1",
@@ -63,6 +56,13 @@ const SeleniumPage: FC = () => {
 		(panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
 			setExpanded(isExpanded ? panel : false);
 		};
+
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+	if (!mounted) {
+		return null;
+	}
 
 	return (
 		<div className={scss.elements}>
