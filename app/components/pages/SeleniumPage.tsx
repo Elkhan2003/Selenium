@@ -28,7 +28,9 @@ const SeleniumPage: FC = () => {
 	const { activeTab, tabs } = useTabs();
 
 	useEffect(() => {
-		localStorage.setItem("expanded", String(expanded));
+		if (typeof window !== "undefined") {
+			localStorage.setItem("expanded", String(expanded));
+		}
 	}, [expanded]);
 
 	const accordionData: AccordionItem[] = [
