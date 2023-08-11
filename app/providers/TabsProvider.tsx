@@ -1,5 +1,12 @@
 "use client";
-import React, { FC, useState, createContext, ReactNode, useMemo } from "react";
+import React, {
+	FC,
+	useState,
+	createContext,
+	ReactNode,
+	useMemo,
+	useEffect
+} from "react";
 import { HtmlIcon } from "@/app/components/svgs";
 import TextBox from "@/app/components/tabs/elements/pages/TextBox";
 import CheckBox from "@/app/components/tabs/elements/pages/CheckBox";
@@ -120,7 +127,16 @@ export const TabsContext = createContext<TabsContextType>({
 });
 
 export const TabsProvider: FC<TabsProviderProps> = ({ children }) => {
-	const [activeTab, setActiveTab] = useState<number>(tabs.elements[0].id);
+	const storedActiveTab = localStorage.getItem("activeTab");
+	const initialActiveTab = storedActiveTab
+		? parseInt(storedActiveTab)
+		: tabs.elements[0].id;
+
+	const [activeTab, setActiveTab] = useState<number>(initialActiveTab);
+
+	useEffect(() => {
+		localStorage.setItem("activeTab", String(activeTab));
+	}, [activeTab]);
 
 	const value = useMemo(() => ({ activeTab, setActiveTab, tabs }), [activeTab]);
 
