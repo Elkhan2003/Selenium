@@ -62,5 +62,14 @@
 		// 	.radio__buttons {
 		// 	}
 		// }
+
+		.select__picture {
+			display: flex;
+			flex-direction: column;
+
+			label {
+				margin-bottom: 10px;
+			}
+		}
 	}
 }

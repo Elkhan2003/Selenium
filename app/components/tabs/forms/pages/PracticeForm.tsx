@@ -1,7 +1,9 @@
 import React, { FC, useState } from "react";
 import scss from "./Forms.module.scss";
 import {
+	Checkbox,
 	FormControlLabel,
+	FormGroup,
 	InputBase,
 	Paper,
 	Radio,
@@ -171,35 +173,56 @@ const PracticeForm: FC = () => {
 								Hobbies
 							</label>
 						</div>
-						<div className={`${scss.radio__buttons} ${scss.userFormWidth}`}>
-							<RadioGroup
-								row
-								aria-labelledby="demo-row-radio-buttons-group-label"
-								name="row-radio-buttons-group"
-							>
+						<div className={`${scss.checkout__buttons} ${scss.userFormWidth}`}>
+							<FormGroup row>
 								<FormControlLabel
+									control={<Checkbox />}
 									id="hobbies-radio-1"
-									value="Sports"
-									control={<Radio />}
 									label="Sports"
 								/>
 								<FormControlLabel
+									control={<Checkbox />}
 									id="hobbies-radio-2"
-									value="Reading"
-									control={<Radio />}
 									label="Reading"
 								/>
 								<FormControlLabel
+									control={<Checkbox />}
 									id="hobbies-radio-3"
-									value="Music"
-									control={<Radio />}
 									label="Music"
 								/>
-							</RadioGroup>
+							</FormGroup>
 						</div>
 					</div>
 
-						
+					<div className={`${scss.userPicture} ${scss.userFormFlex}`}>
+						<div className={scss.label}>
+							<label id="subjects-label" htmlFor="picture">
+								Picture
+							</label>
+						</div>
+						<div className={`${scss.select__picture} ${scss.userFormWidth}`}>
+							<label htmlFor="uploadPicture">Select picture</label>
+							<input id="uploadPicture" type="file" lang="en"></input>
+						</div>
+					</div>
+
+					<div className={`${scss.userCurrentAddress} ${scss.userFormFlex}`}>
+						<div className={scss.label}>
+							<label id="currentAddress-label" htmlFor="currentAddress">
+								Current Address
+							</label>
+						</div>
+						<div className={`${scss.current__address} ${scss.userFormWidth}`}>
+							<TextField
+								fullWidth
+								variant="outlined"
+								id="currentAddress"
+								name="currentAddress"
+								label="Current Address"
+								multiline
+							/>
+						</div>
+					</div>
 				</form>
 			</div>
 		</>
