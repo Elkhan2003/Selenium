@@ -24,6 +24,7 @@ interface FormData {
 	mobile: number;
 	subjects: string;
 	hobbies: string;
+	uploadPicture: FileList;
 	currentAddress: string;
 	state: string;
 	city: string;
@@ -36,19 +37,17 @@ interface selectType {
 
 interface optionType {
 	value: string;
-	label: string;
 	words: string[];
 }
 
 const options: optionType[] = [
-	{ value: "NCR", label: "NCR", words: ["Delhi", "Gurgaon", "Noida"] },
+	{ value: "NCR", words: ["Delhi", "Gurgaon", "Noida"] },
 	{
 		value: "Uttar Pradesh",
-		label: "Uttar Pradesh",
 		words: ["Agra", "Lucknow", "Merrut"]
 	},
-	{ value: "Haryana", label: "Haryana", words: ["Karnal", "Panipat"] },
-	{ value: "rajasthan", label: "Rajasthan", words: ["Jaipur", "Jaiselmer"] }
+	{ value: "Haryana", words: ["Karnal", "Panipat"] },
+	{ value: "rajasthan", words: ["Jaipur", "Jaiselmer"] }
 ];
 
 const PracticeForm: FC = () => {
@@ -69,6 +68,7 @@ const PracticeForm: FC = () => {
 			mobile: data.mobile,
 			subjects: data.subjects,
 			hobbies: data.hobbies,
+			uploadPicture: data.uploadPicture[0].name,
 			currentAddress: data.currentAddress,
 			state: data.state,
 			city: data.city
@@ -333,7 +333,12 @@ const PracticeForm: FC = () => {
 						</div>
 						<div className={`${scss.select__picture} ${scss.userFormWidth}`}>
 							<label htmlFor="uploadPicture">Select picture</label>
-							<input id="uploadPicture" type="file" lang="en"></input>
+							<input
+								id="uploadPicture"
+								type="file"
+								lang="en"
+								{...register("uploadPicture")}
+							></input>
 						</div>
 					</div>
 
@@ -379,9 +384,9 @@ const PracticeForm: FC = () => {
 									label="Select State"
 									onChange={handleChange}
 								>
-									{options.map((option) => (
-										<MenuItem key={option.value} value={option.value}>
-											{option.label}
+									{options.map((option, index) => (
+										<MenuItem key={index + 1} value={option.value}>
+											{option.value}
 										</MenuItem>
 									))}
 								</Select>
