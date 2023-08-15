@@ -71,5 +71,32 @@
 				margin-bottom: 10px;
 			}
 		}
+
+		.userSelect {
+			.select__inputs {
+				display: flex;
+				justify-content: space-between;
+
+				gap: 100px;
+
+				@media (max-width: 1150px) {
+					gap: 30px;
+				}
+			}
+		}
+
+		.button {
+			width: 100%;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+		}
 	}
+}
+
+// !
+.select {
+	display: flex;
+
+	gap: 50px;
 }

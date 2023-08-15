@@ -1,21 +1,80 @@
 import React, { FC, useState } from "react";
 import scss from "./Forms.module.scss";
 import {
+	Button,
 	Checkbox,
+	FormControl,
 	FormControlLabel,
 	FormGroup,
-	InputBase,
-	Paper,
+	InputLabel,
+	MenuItem,
 	Radio,
 	RadioGroup,
 	TextField
 } from "@mui/material";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+
+interface selectType {
+	state: string;
+	city: string;
+}
+
+interface optionType {
+	value: string;
+	label: string;
+	words: string[];
+}
+
+const options: optionType[] = [
+	{ value: "ncr", label: "NCR", words: ["Delhi", "Gurgaon", "Noida"] },
+	{
+		value: "uttar_pradesh",
+		label: "Uttar Pradesh",
+		words: ["Agra", "Lucknow", "Merrut"]
+	},
+	{ value: "haryana", label: "Haryana", words: ["Karnal", "Panipat"] },
+	{ value: "rajasthan", label: "Rajasthan", words: ["Jaipur", "Jaiselmer"] }
+];
 
 const PracticeForm: FC = () => {
-	const [dateOfBirth, setDateOfBirth] = useState("2003-10-14"); // Начальная дата
+	// ! Date Of Birth
+	const today = new Date();
+	const year = today.getFullYear();
+	const month = String(today.getMonth() + 1).padStart(2, "0");
+	const day = String(today.getDate()).padStart(2, "0");
+	const currentDate = `${year}-${month}-${day}`;
 
+	const [dateOfBirth, setDateOfBirth] = useState(currentDate);
 	const handleDateChange = (event: any) => {
 		setDateOfBirth(event.target.value);
+	};
+
+	// ! Select
+	const [select, setSelect] = useState<selectType>({
+		state: "",
+		city: ""
+	});
+
+	const [cityOptions, setCityOptions] = useState<string[]>([]);
+
+	const handleChange = (event: SelectChangeEvent) => {
+		const { name, value } = event.target;
+		const selectedOption = options.find((option) => option.value === value);
+
+		if (selectedOption) {
+			setSelect({
+				...select,
+				[name]: value
+			});
+			setCityOptions(selectedOption.words);
+		}
+	};
+
+	const handleCityChange = (event: SelectChangeEvent) => {
+		setSelect({
+			...select,
+			city: event.target.value as string
+		});
 	};
 
 	return (
@@ -222,6 +281,62 @@ const PracticeForm: FC = () => {
 								multiline
 							/>
 						</div>
+					</div>
+
+					<div className={`${scss.userSelect} ${scss.userFormFlex}`}>
+						<div>
+							<label id="stateCity-label" htmlFor="stateCity">
+								State and City
+							</label>
+						</div>
+						<div className={`${scss.select__inputs} ${scss.userFormWidth}`}>
+							<FormControl fullWidth>
+								<InputLabel id="select_1" size="small">
+									Select State
+								</InputLabel>
+								<Select
+									size="small"
+									labelId="select_1"
+									id="select_1"
+									name="state"
+									value={select.state}
+									label="Select State"
+									onChange={handleChange}
+								>
+									{options.map((option) => (
+										<MenuItem key={option.value} value={option.value}>
+											{option.label}
+										</MenuItem>
+									))}
+								</Select>
+							</FormControl>
+							<FormControl fullWidth disabled={!select.state}>
+								<InputLabel id="select_2" size="small">
+									Select City
+								</InputLabel>
+								<Select
+									size="small"
+									labelId="select_2"
+									id="select_2"
+									name="city"
+									value={select.city}
+									label="Select City"
+									onChange={handleCityChange}
+								>
+									{cityOptions.map((word) => (
+										<MenuItem key={word} value={word}>
+											{word}
+										</MenuItem>
+									))}
+								</Select>
+							</FormControl>
+						</div>
+					</div>
+
+					<div className={scss.button}>
+						<Button id="submit" type="submit" variant="contained" size="medium">
+							Submit
+						</Button>
 					</div>
 				</form>
 			</div>
