@@ -12,7 +12,14 @@ import {
 	MenuItem,
 	Radio,
 	RadioGroup,
-	TextField
+	TextField,
+	Table,
+	TableBody,
+	TableCell,
+	TableContainer,
+	TableRow,
+	Paper,
+	TableHead
 } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useForm } from "react-hook-form";
@@ -54,6 +61,7 @@ const options: optionType[] = [
 
 const PracticeForm: FC = () => {
 	const [open, setOpen] = useState(false);
+	const [uploadedModal, setUploadedModal] = useState<FormData | null>(null);
 	const {
 		register,
 		handleSubmit,
@@ -61,28 +69,45 @@ const PracticeForm: FC = () => {
 		reset
 	} = useForm<FormData>();
 
-	const sendData = async (data: FormData) => {
-		const titles = {
-			firstName: data.firstName,
-			lastName: data.lastName,
-			gender: data.gender,
-			email: data.email,
-			dateOfBirth: data.dateOfBirth,
-			mobile: data.mobile,
-			subjects: data.subjects,
-			hobbies: data.hobbies,
-			uploadPicture: data.uploadPicture[0].name,
-			currentAddress: data.currentAddress,
-			state: data.state,
-			city: data.city
-		};
+	const modalResult = [
+		{
+			label: "Student Name",
+			value: uploadedModal?.firstName + " " + uploadedModal?.lastName
+		},
+		{ label: "Student Email", value: uploadedModal?.email },
+		{ label: "Gender", value: uploadedModal?.gender },
+		{ label: "Mobile", value: uploadedModal?.mobile },
+		{ label: "Date of Birth", value: uploadedModal?.dateOfBirth },
+		{ label: "Subjects", value: uploadedModal?.subjects },
+		{ label: "Hobbies", value: uploadedModal?.hobbies },
+		{ label: "Picture", value: uploadedModal?.uploadPicture?.[0]?.name },
+		{ label: "Address", value: uploadedModal?.currentAddress },
+		{
+			label: "State and City",
+			value: uploadedModal?.state + " " + uploadedModal?.city
+		}
+	];
 
-		console.log(titles);
+	const sendData = async (data: FormData) => {
 		try {
-			console.log("Response from the server:");
-			// reset();
+			// const titles = {
+			// 	firstName: data.firstName,
+			// 	lastName: data.lastName,
+			// 	gender: data.gender,
+			// 	email: data.email,
+			// 	dateOfBirth: data.dateOfBirth,
+			// 	mobile: data.mobile,
+			// 	subjects: data.subjects,
+			// 	hobbies: data.hobbies,
+			// 	uploadPicture: data.uploadPicture[0].name,
+			// 	currentAddress: data.currentAddress,
+			// 	state: data.state,
+			// 	city: data.city
+			// };
+			setUploadedModal(data);
+			setOpen(true);
 		} catch (error) {
-			console.error("Error occurred while sending the POST request:", error);
+			console.error(`${error}`);
 		}
 	};
 
@@ -129,16 +154,48 @@ const PracticeForm: FC = () => {
 	return (
 		<>
 			<Dialog open={open}>
-				<DialogActions>
-					<Button
-						onClick={() => {
-							setOpen(false);
-							// reset();
-						}}
-					>
-						Close
-					</Button>
-				</DialogActions>
+				<div className={scss.modal}>
+					<h1>Thanks for submitting the form</h1>
+					<div className={scss.table__container}>
+						<TableContainer component={Paper}>
+							<Table>
+								<TableHead>
+									<TableRow>
+										<TableCell>
+											<h3>Label</h3>
+										</TableCell>
+										<TableCell>
+											<h3>Values</h3>
+										</TableCell>
+									</TableRow>
+								</TableHead>
+								<TableBody>
+									{modalResult.map((item, index) => (
+										<TableRow key={index + 1}>
+											<TableCell>{item.label}</TableCell>
+											<TableCell>{item.value}</TableCell>
+										</TableRow>
+									))}
+								</TableBody>
+							</Table>
+						</TableContainer>
+					</div>
+
+					<div className={scss.button}>
+						<Button
+							id="close"
+							variant="contained"
+							size="medium"
+							color="error"
+							onClick={() => {
+								setOpen(false);
+								reset();
+							}}
+						>
+							Close
+						</Button>
+					</div>
+				</div>
 			</Dialog>
 			<div className={scss.PracticeForm}>
 				<h3>Student Registration Form</h3>
