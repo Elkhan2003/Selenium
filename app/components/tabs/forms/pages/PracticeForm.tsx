@@ -3,6 +3,8 @@ import scss from "./Forms.module.scss";
 import {
 	Button,
 	Checkbox,
+	Dialog,
+	DialogActions,
 	FormControl,
 	FormControlLabel,
 	FormGroup,
@@ -51,6 +53,7 @@ const options: optionType[] = [
 ];
 
 const PracticeForm: FC = () => {
+	const [open, setOpen] = useState(false);
 	const {
 		register,
 		handleSubmit,
@@ -125,6 +128,18 @@ const PracticeForm: FC = () => {
 
 	return (
 		<>
+			<Dialog open={open}>
+				<DialogActions>
+					<Button
+						onClick={() => {
+							setOpen(false);
+							// reset();
+						}}
+					>
+						Close
+					</Button>
+				</DialogActions>
+			</Dialog>
 			<div className={scss.PracticeForm}>
 				<h3>Student Registration Form</h3>
 				<form className={scss.form} onSubmit={handleSubmit(sendData)}>

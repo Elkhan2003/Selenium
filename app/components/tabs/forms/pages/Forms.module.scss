@@ -100,3 +100,17 @@
 
 	gap: 50px;
 }
+
+.modal {
+	padding: 20px;
+
+	.table__container {
+		margin: 15px 0;
+	}
+
+	.button {
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+	}
+}
