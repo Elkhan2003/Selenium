@@ -47,6 +47,9 @@ dependencies:
   react-folder-tree:
     specifier: ^5.1.1
     version: 5.1.1(react-dom@18.2.0)(react@18.2.0)
+  react-hook-form:
+    specifier: ^7.45.4
+    version: 7.45.4(react@18.2.0)
   sass:
     specifier: ^1.64.2
     version: 1.64.2
@@ -2648,6 +2651,15 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       react-icons: 4.10.1(react@18.2.0)
       use-tree-state: 1.0.0(react-dom@18.2.0)(react@18.2.0)
+    dev: false
+
+  /react-hook-form@7.45.4(react@18.2.0):
+    resolution: {integrity: sha512-HGDV1JOOBPZj10LB3+OZgfDBTn+IeEsNOKiq/cxbQAIbKaiJUe/KV8DBUzsx0Gx/7IG/orWqRRm736JwOfUSWQ==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-icons@4.10.1(react@18.2.0):

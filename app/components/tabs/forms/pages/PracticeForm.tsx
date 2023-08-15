@@ -13,6 +13,21 @@ import {
 	TextField
 } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { useForm } from "react-hook-form";
+
+interface FormData {
+	firstName: string;
+	lastName: string;
+	gender: string;
+	email: string;
+	dateOfBirth: string;
+	mobile: number;
+	subjects: string;
+	hobbies: string;
+	currentAddress: string;
+	state: string;
+	city: string;
+}
 
 interface selectType {
 	state: string;
@@ -26,17 +41,48 @@ interface optionType {
 }
 
 const options: optionType[] = [
-	{ value: "ncr", label: "NCR", words: ["Delhi", "Gurgaon", "Noida"] },
+	{ value: "NCR", label: "NCR", words: ["Delhi", "Gurgaon", "Noida"] },
 	{
-		value: "uttar_pradesh",
+		value: "Uttar Pradesh",
 		label: "Uttar Pradesh",
 		words: ["Agra", "Lucknow", "Merrut"]
 	},
-	{ value: "haryana", label: "Haryana", words: ["Karnal", "Panipat"] },
+	{ value: "Haryana", label: "Haryana", words: ["Karnal", "Panipat"] },
 	{ value: "rajasthan", label: "Rajasthan", words: ["Jaipur", "Jaiselmer"] }
 ];
 
 const PracticeForm: FC = () => {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+		reset
+	} = useForm<FormData>();
+
+	const sendData = async (data: FormData) => {
+		const titles = {
+			firstName: data.firstName,
+			lastName: data.lastName,
+			gender: data.gender,
+			email: data.email,
+			dateOfBirth: data.dateOfBirth,
+			mobile: data.mobile,
+			subjects: data.subjects,
+			hobbies: data.hobbies,
+			currentAddress: data.currentAddress,
+			state: data.state,
+			city: data.city
+		};
+
+		console.log(titles);
+		try {
+			console.log("Response from the server:");
+			// reset();
+		} catch (error) {
+			console.error("Error occurred while sending the POST request:", error);
+		}
+	};
+
 	// ! Date Of Birth
 	const today = new Date();
 	const year = today.getFullYear();
@@ -81,7 +127,7 @@ const PracticeForm: FC = () => {
 		<>
 			<div className={scss.PracticeForm}>
 				<h3>Student Registration Form</h3>
-				<form className={scss.form}>
+				<form className={scss.form} onSubmit={handleSubmit(sendData)}>
 					<div className={`${scss.userName} ${scss.userFormFlex}`}>
 						<div className={scss.label}>
 							<label id="userName-label" htmlFor="name">
@@ -90,22 +136,28 @@ const PracticeForm: FC = () => {
 						</div>
 						<div className={`${scss.name__inputs} ${scss.userFormWidth}`}>
 							<TextField
+								{...(errors.firstName && {
+									error: true
+								})}
 								fullWidth
 								variant="outlined"
 								size="small"
 								type="text"
 								id="firstName"
-								name="firstName"
 								label="First Name"
+								{...register("firstName", { required: true, minLength: 2 })}
 							/>
 							<TextField
+								{...(errors.lastName && {
+									error: true
+								})}
 								fullWidth
 								variant="outlined"
 								size="small"
 								type="text"
 								id="lastName"
-								name="lastName"
 								label="Last Name"
+								{...register("lastName", { required: true, minLength: 2 })}
 							/>
 						</div>
 					</div>
@@ -118,13 +170,19 @@ const PracticeForm: FC = () => {
 						</div>
 						<div className={`${scss.email__inputs} ${scss.userFormWidth}`}>
 							<TextField
+								{...(errors.email && {
+									error: true
+								})}
 								fullWidth
 								variant="outlined"
 								size="small"
 								type="text"
 								id="userEmail"
-								name="email"
 								label="name@example.com"
+								{...register("email", {
+									required: false,
+									pattern: /^\S+@\S+$/i
+								})}
 							/>
 						</div>
 					</div>
@@ -136,27 +194,23 @@ const PracticeForm: FC = () => {
 							</label>
 						</div>
 						<div className={`${scss.radio__buttons} ${scss.userFormWidth}`}>
-							<RadioGroup
-								row
-								aria-labelledby="demo-row-radio-buttons-group-label"
-								name="row-radio-buttons-group"
-							>
+							<RadioGroup row>
 								<FormControlLabel
 									id="gender-radio-1"
 									value="Male"
-									control={<Radio />}
+									control={<Radio {...register("gender")} value="Male" />}
 									label="Male"
 								/>
 								<FormControlLabel
 									id="gender-radio-2"
 									value="Female"
-									control={<Radio />}
+									control={<Radio {...register("gender")} value="Female" />}
 									label="Female"
 								/>
 								<FormControlLabel
 									id="gender-radio-3"
 									value="Other"
-									control={<Radio />}
+									control={<Radio {...register("gender")} value="Other" />}
 									label="Other"
 								/>
 							</RadioGroup>
@@ -171,13 +225,19 @@ const PracticeForm: FC = () => {
 						</div>
 						<div className={`${scss.mobile__inputs} ${scss.userFormWidth}`}>
 							<TextField
+								{...(errors.mobile && {
+									error: true
+								})}
 								fullWidth
 								variant="outlined"
 								size="small"
 								type="text"
 								id="userMobile"
-								name="mobile"
 								label="Mobile Number"
+								{...register("mobile", {
+									required: true,
+									pattern: /^\+?\d{10,10}$/
+								})}
 							/>
 						</div>
 					</div>
@@ -192,12 +252,17 @@ const PracticeForm: FC = () => {
 							className={`${scss.dateOfBirth__inputs} ${scss.userFormWidth}`}
 						>
 							<TextField
+								{...(errors.dateOfBirth && {
+									error: true
+								})}
 								variant="outlined"
 								size="small"
 								type="date"
 								id="dateOfBirthInput"
-								name="dateOfBirth"
 								label="Date Of Birth"
+								{...register("dateOfBirth", {
+									required: true
+								})}
 								defaultValue={dateOfBirth}
 								onChange={handleDateChange}
 								InputLabelProps={{
@@ -215,13 +280,18 @@ const PracticeForm: FC = () => {
 						</div>
 						<div className={`${scss.subjects__inputs} ${scss.userFormWidth}`}>
 							<TextField
+								{...(errors.subjects && {
+									error: true
+								})}
 								fullWidth
 								variant="outlined"
 								size="small"
 								type="text"
 								id="subjectsContainer"
-								name="subjects"
 								label="Subjects"
+								{...register("subjects", {
+									required: true
+								})}
 							/>
 						</div>
 					</div>
@@ -235,17 +305,19 @@ const PracticeForm: FC = () => {
 						<div className={`${scss.checkout__buttons} ${scss.userFormWidth}`}>
 							<FormGroup row>
 								<FormControlLabel
-									control={<Checkbox />}
+									control={<Checkbox {...register("hobbies")} value="Sports" />}
 									id="hobbies-radio-1"
 									label="Sports"
 								/>
 								<FormControlLabel
-									control={<Checkbox />}
+									control={
+										<Checkbox {...register("hobbies")} value="Reading" />
+									}
 									id="hobbies-radio-2"
 									label="Reading"
 								/>
 								<FormControlLabel
-									control={<Checkbox />}
+									control={<Checkbox {...register("hobbies")} value="Music" />}
 									id="hobbies-radio-3"
 									label="Music"
 								/>
@@ -276,8 +348,10 @@ const PracticeForm: FC = () => {
 								fullWidth
 								variant="outlined"
 								id="currentAddress"
-								name="currentAddress"
 								label="Current Address"
+								{...register("currentAddress", {
+									required: false
+								})}
 								multiline
 							/>
 						</div>
@@ -298,7 +372,9 @@ const PracticeForm: FC = () => {
 									size="small"
 									labelId="select_1"
 									id="select_1"
-									name="state"
+									{...register("state", {
+										required: false
+									})}
 									value={select.state}
 									label="Select State"
 									onChange={handleChange}
@@ -318,7 +394,9 @@ const PracticeForm: FC = () => {
 									size="small"
 									labelId="select_2"
 									id="select_2"
-									name="city"
+									{...register("city", {
+										required: false
+									})}
 									value={select.city}
 									label="Select City"
 									onChange={handleCityChange}
