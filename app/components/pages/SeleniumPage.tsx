@@ -9,9 +9,17 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import scss from "./Style.module.scss";
 import { useTabs } from "@/app/hooks/useTabs";
+import {
+	BookIcon,
+	BurgerIcon,
+	FormIcon,
+	InteractionsIcon,
+	WidgetsIcon,
+	WindowsIcon
+} from "../svgs";
 import { Elements } from "../tabs/elements";
 import { Forms } from "../tabs/forms";
-import { BookIcon, BurgerIcon, FormIcon, InteractionsIcon, WidgetsIcon, WindowsIcon } from "../svgs";
+import { Windows } from "../tabs/windows";
 
 interface AccordionItem {
 	panel: string;
@@ -48,7 +56,7 @@ const SeleniumPage: FC = () => {
 			panel: "panel3",
 			icon: <WindowsIcon />,
 			header: "Alerts, Frame & Windows",
-			content: "Lorem ipsum dolor sit amet, consectetur adip"
+			content: <Windows />
 		},
 		{
 			panel: "panel4",
@@ -95,6 +103,15 @@ const SeleniumPage: FC = () => {
 							</p>
 						)
 				)}
+
+				{tabs.windows.map(
+					(tab, index) =>
+						activeTab === tab.id && (
+							<p key={index + 1} className={scss.tab__content}>
+								{tab.label}
+							</p>
+						)
+				)}
 			</div>
 
 			<div className={scss.content}>
@@ -131,6 +148,15 @@ const SeleniumPage: FC = () => {
 				)}
 
 				{tabs.forms.map(
+					(tab, index) =>
+						activeTab === tab.id && (
+							<div key={index + 1} className={scss.tab__content}>
+								{tab.page}
+							</div>
+						)
+				)}
+
+				{tabs.windows.map(
 					(tab, index) =>
 						activeTab === tab.id && (
 							<div key={index + 1} className={scss.tab__content}>

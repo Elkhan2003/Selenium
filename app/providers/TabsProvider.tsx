@@ -8,6 +8,7 @@ import React, {
 	useEffect
 } from "react";
 import { HtmlIcon } from "@/app/components/svgs";
+import Test from "@/app/components/tabs/windows/pages/Test";
 import TextBox from "@/app/components/tabs/elements/pages/TextBox";
 import CheckBox from "@/app/components/tabs/elements/pages/CheckBox";
 import RadioButton from "@/app/components/tabs/elements/pages/RadioButton";
@@ -17,8 +18,12 @@ import Links from "@/app/components/tabs/elements/pages/Links";
 import BrokenLinksImages from "@/app/components/tabs/elements/pages/BrokenLinksImages";
 import UploadAndDownload from "@/app/components/tabs/elements/pages/UploadAndDownload";
 import DynamicProperties from "@/app/components/tabs/elements/pages/DynamicProperties";
-import PracticeForm from "../components/tabs/forms/pages/PracticeForm";
-import Test from "../components/tabs/forms/pages/Test";
+import PracticeForm from "@/app/components/tabs/forms/pages/PracticeForm";
+import BrowserWindows from "@/app/components/tabs/windows/pages/BrowserWindows";
+import Alerts from "@/app/components/tabs/windows/pages/Alerts";
+import Frames from "@/app/components/tabs/windows/pages/Frames";
+import NestedFrames from "@/app/components/tabs/windows/pages/NestedFrames";
+import ModalDialogs from "@/app/components/tabs/windows/pages/ModalDialogs";
 
 interface Tab {
 	id: number;
@@ -31,6 +36,7 @@ interface Tab {
 interface TabsProps {
 	elements: Tab[];
 	forms: Tab[];
+	windows: Tab[];
 }
 
 const tabs: TabsProps = {
@@ -107,10 +113,48 @@ const tabs: TabsProps = {
 			icon: <HtmlIcon />,
 			label: "Practice Form",
 			page: <PracticeForm />
-		},
+		}
+	],
+
+	windows: [
 		{
 			id: 11,
-			id_link: "practiceForm_page",
+			id_link: "browserWindows_page",
+			icon: <HtmlIcon />,
+			label: "Browser Windows",
+			page: <BrowserWindows />
+		},
+		{
+			id: 12,
+			id_link: "alerts_page",
+			icon: <HtmlIcon />,
+			label: "Alerts",
+			page: <Alerts />
+		},
+		{
+			id: 13,
+			id_link: "frames_page",
+			icon: <HtmlIcon />,
+			label: "Frames",
+			page: <Frames />
+		},
+		{
+			id: 14,
+			id_link: "nestedFrames_page",
+			icon: <HtmlIcon />,
+			label: "Nested Frames",
+			page: <NestedFrames />
+		},
+		{
+			id: 15,
+			id_link: "modalDialogs_page",
+			icon: <HtmlIcon />,
+			label: "Modal Dialogs",
+			page: <ModalDialogs />
+		},
+		{
+			id: 9999,
+			id_link: "test_page",
 			icon: <HtmlIcon />,
 			label: "Test",
 			page: <Test />

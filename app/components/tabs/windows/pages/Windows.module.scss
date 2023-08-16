@@ -1,0 +1,116 @@
+.PracticeForm {
+	display: flex;
+	flex-direction: column;
+
+	.form {
+		.userFormFlex {
+			margin: 12px 0;
+
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.userFormWidth {
+			width: 100%;
+			max-width: 700px;
+		}
+
+		.label {
+			width: 100%;
+			max-width: 150px;
+		}
+
+		.userName {
+			.name__inputs {
+				display: flex;
+				justify-content: space-between;
+
+				gap: 100px;
+
+				@media (max-width: 1150px) {
+					gap: 30px;
+				}
+			}
+		}
+
+		// .userEmail {
+		// 	.email__inputs {
+		// 	}
+		// }
+
+		// .userGender {
+		// 	.radio__buttons {
+		// 	}
+		// }
+
+		// .userMobile {
+		// 	.mobile__inputs {
+		// 	}
+		// }
+
+		// .userDateOfBirth {
+		// 	.dateOfBirth__inputs {
+		// 	}
+		// }
+
+		// .subjects {
+		// 	.subjects__inputs {
+		// 	}
+		// }
+
+		// .userHobbies {
+		// 	.radio__buttons {
+		// 	}
+		// }
+
+		.select__picture {
+			display: flex;
+			flex-direction: column;
+
+			label {
+				margin-bottom: 10px;
+			}
+		}
+
+		.userSelect {
+			.select__inputs {
+				display: flex;
+				justify-content: space-between;
+
+				gap: 100px;
+
+				@media (max-width: 1150px) {
+					gap: 30px;
+				}
+			}
+		}
+
+		.button {
+			width: 100%;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+		}
+	}
+}
+
+// !
+.select {
+	display: flex;
+
+	gap: 50px;
+}
+
+.modal {
+	padding: 20px;
+
+	.table__container {
+		margin: 15px 0;
+	}
+
+	.button {
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+	}
+}

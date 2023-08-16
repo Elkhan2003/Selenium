@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import scss from "./Forms.module.scss";
+import scss from "./Windows.module.scss";
 import { useForm } from "react-hook-form";
 import {
 	Button,
