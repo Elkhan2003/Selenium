@@ -1,6 +1,6 @@
 // ! BrowserWindows
-.BrowserWindows{
-	.buttons{
+.BrowserWindows {
+	.buttons {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
@@ -10,3 +10,38 @@
 		}
 	}
 }
+
+// ! Alerts
+.Alerts {
+	.flexes {
+		margin-bottom: 15px;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.title {
+		width: 100%;
+
+		span {
+			margin-right: 20px;
+		}
+
+		.resultConfirmOk {
+			color: #00a000;
+		}
+
+		.resultConfirmCancel {
+			color: #ff0000;
+		}
+
+		.resultPrompt {
+			color: purple;
+		}
+	}
+
+	.buttons {
+		width: 100%;
+	}
+}
+
+// ! Frames
