@@ -59,4 +59,13 @@
 }
 
 // ! ModalDialogs
-// .ModalDialogs {}
+.ModalDialogs {
+	.title {
+		margin-bottom: 15px;
+	}
+
+	.buttons {
+		display: flex;
+		gap: 25px;
+	}
+}
