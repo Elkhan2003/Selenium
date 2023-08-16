@@ -11,7 +11,7 @@ import scss from "./Style.module.scss";
 import { useTabs } from "@/app/hooks/useTabs";
 import { Elements } from "../tabs/elements";
 import { Forms } from "../tabs/forms";
-import { BurgerIcon, FormIcon, WindowsIcon } from "../svgs";
+import { BookIcon, BurgerIcon, FormIcon, InteractionsIcon, WidgetsIcon, WindowsIcon } from "../svgs";
 
 interface AccordionItem {
 	panel: string;
@@ -48,6 +48,24 @@ const SeleniumPage: FC = () => {
 			panel: "panel3",
 			icon: <WindowsIcon />,
 			header: "Alerts, Frame & Windows",
+			content: "Lorem ipsum dolor sit amet, consectetur adip"
+		},
+		{
+			panel: "panel4",
+			icon: <WidgetsIcon />,
+			header: "Widgets",
+			content: "Lorem ipsum dolor sit amet, consectetur adip"
+		},
+		{
+			panel: "panel5",
+			icon: <InteractionsIcon />,
+			header: "Interactions",
+			content: "Lorem ipsum dolor sit amet, consectetur adip"
+		},
+		{
+			panel: "panel6",
+			icon: <BookIcon />,
+			header: "Book Store Application",
 			content: "Lorem ipsum dolor sit amet, consectetur adip"
 		}
 	];
