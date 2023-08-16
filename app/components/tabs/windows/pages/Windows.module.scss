@@ -1,0 +1,12 @@
+// ! BrowserWindows
+.BrowserWindows{
+	.buttons{
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+
+		button {
+			margin-bottom: 15px;
+		}
+	}
+}

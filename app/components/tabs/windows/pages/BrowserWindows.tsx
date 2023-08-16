@@ -26,7 +26,7 @@ const BrowserWindows: FC = () => {
 	};
 
 	return (
-		<div>
+		<div className={scss.BrowserWindows}>
 			<div className={scss.buttons}>
 				<div id="tabButtonWrapper">
 					<Button
