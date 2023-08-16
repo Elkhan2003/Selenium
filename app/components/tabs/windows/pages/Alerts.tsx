@@ -26,7 +26,7 @@ const Alerts: FC = () => {
 	};
 
 	const handleSeePrompt = () => {
-		const result = prompt("What is your name?");
+		const result = prompt("Press enter your name?");
 		if (result) {
 			setUserPrompt(result);
 		} else {
