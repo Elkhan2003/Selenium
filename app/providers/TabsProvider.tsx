@@ -25,6 +25,7 @@ import Frames from "@/app/components/tabs/windows/pages/Frames";
 import NestedFrames from "@/app/components/tabs/windows/pages/NestedFrames";
 import ModalDialogs from "@/app/components/tabs/windows/pages/ModalDialogs";
 import Accordian from "@/app/components/tabs/widgets/pages/Accordian";
+import AutoComplete from "../components/tabs/widgets/pages/AutoComplete";
 
 interface Tab {
 	id: number;
@@ -163,6 +164,13 @@ const tabs: TabsProps = {
 			icon: <HtmlIcon />,
 			label: "Accordian",
 			page: <Accordian />
+		},
+		{
+			id: 17,
+			id_link: "autoComplete_page",
+			icon: <HtmlIcon />,
+			label: "Auto Complete",
+			page: <AutoComplete />
 		},
 		{
 			id: 9999,
