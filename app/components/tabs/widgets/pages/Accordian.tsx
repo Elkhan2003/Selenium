@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { FC } from "react";
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
@@ -44,7 +44,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 	borderTop: "1px solid rgba(0, 0, 0, .125)"
 }));
 
-const Accordian = () => {
+const Accordian: FC = () => {
 	const [expanded, setExpanded] = React.useState<string | false>("panel1");
 
 	const handleChange =

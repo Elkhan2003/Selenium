@@ -26,6 +26,7 @@ import NestedFrames from "@/app/components/tabs/windows/pages/NestedFrames";
 import ModalDialogs from "@/app/components/tabs/windows/pages/ModalDialogs";
 import Accordian from "@/app/components/tabs/widgets/pages/Accordian";
 import AutoComplete from "../components/tabs/widgets/pages/AutoComplete";
+import DatePicker from "../components/tabs/widgets/pages/DatePicker";
 
 interface Tab {
 	id: number;
@@ -171,6 +172,13 @@ const tabs: TabsProps = {
 			icon: <HtmlIcon />,
 			label: "Auto Complete",
 			page: <AutoComplete />
+		},
+		{
+			id: 18,
+			id_link: "datePicker_page",
+			icon: <HtmlIcon />,
+			label: "Date Picker",
+			page: <DatePicker />
 		},
 		{
 			id: 9999,

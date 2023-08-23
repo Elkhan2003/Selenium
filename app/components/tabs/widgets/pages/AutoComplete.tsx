@@ -8,7 +8,7 @@ const AutoComplete: FC = () => {
 		<Stack spacing={2} sx={{ width: 500 }}>
 			<Autocomplete
 				multiple
-				id="size-small-outlined-multi"
+				id="autoCompleteMultiple"
 				size="small"
 				options={data}
 				getOptionLabel={(option) => option.title}
@@ -22,7 +22,7 @@ const AutoComplete: FC = () => {
 				)}
 			/>
 			<Autocomplete
-				id="size-small-outlined"
+				id="autoCompleteSingle"
 				size="small"
 				options={data}
 				getOptionLabel={(option) => option.title}
