@@ -24,6 +24,7 @@ import Alerts from "@/app/components/tabs/windows/pages/Alerts";
 import Frames from "@/app/components/tabs/windows/pages/Frames";
 import NestedFrames from "@/app/components/tabs/windows/pages/NestedFrames";
 import ModalDialogs from "@/app/components/tabs/windows/pages/ModalDialogs";
+import Accordian from "@/app/components/tabs/widgets/pages/Accordian";
 
 interface Tab {
 	id: number;
@@ -37,6 +38,7 @@ interface TabsProps {
 	elements: Tab[];
 	forms: Tab[];
 	windows: Tab[];
+	widgets: Tab[];
 }
 
 const tabs: TabsProps = {
@@ -151,6 +153,16 @@ const tabs: TabsProps = {
 			icon: <HtmlIcon />,
 			label: "Modal Dialogs",
 			page: <ModalDialogs />
+		}
+	],
+
+	widgets: [
+		{
+			id: 16,
+			id_link: "accordian_page",
+			icon: <HtmlIcon />,
+			label: "Accordian",
+			page: <Accordian />
 		},
 		{
 			id: 9999,

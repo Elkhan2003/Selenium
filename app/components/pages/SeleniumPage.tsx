@@ -20,6 +20,7 @@ import {
 import { Elements } from "../tabs/elements";
 import { Forms } from "../tabs/forms";
 import { Windows } from "../tabs/windows";
+import { Widgets } from "../tabs/widgets";
 
 interface AccordionItem {
 	panel: string;
@@ -62,7 +63,7 @@ const SeleniumPage: FC = () => {
 			panel: "panel4",
 			icon: <WidgetsIcon />,
 			header: "Widgets",
-			content: "Lorem ipsum dolor sit amet, consectetur adip"
+			content: <Widgets />
 		},
 		{
 			panel: "panel5",
@@ -105,6 +106,15 @@ const SeleniumPage: FC = () => {
 				)}
 
 				{tabs.windows.map(
+					(tab, index) =>
+						activeTab === tab.id && (
+							<p key={index + 1} className={scss.tab__content}>
+								{tab.label}
+							</p>
+						)
+				)}
+
+				{tabs.widgets.map(
 					(tab, index) =>
 						activeTab === tab.id && (
 							<p key={index + 1} className={scss.tab__content}>
@@ -157,6 +167,15 @@ const SeleniumPage: FC = () => {
 				)}
 
 				{tabs.windows.map(
+					(tab, index) =>
+						activeTab === tab.id && (
+							<div key={index + 1} className={scss.tab__content}>
+								{tab.page}
+							</div>
+						)
+				)}
+
+				{tabs.widgets.map(
 					(tab, index) =>
 						activeTab === tab.id && (
 							<div key={index + 1} className={scss.tab__content}>
