@@ -87,7 +87,7 @@ const ToolTips: FC = () => {
 
 				<div id="texToolTopContainer" className={scss.marginTop}>
 					<BootstrapTooltip title="You hovered over the Contrary">
-						<a href="#">Contrary</a>
+						<a href="javascript:void(0)">Contrary</a>
 					</BootstrapTooltip>{" "}
 					Contrary to popular belief, Lorem Ipsum is not simply random text. It
 					has roots in a piece of classical Latin literature from 45 BC, making
@@ -97,7 +97,7 @@ const ToolTips: FC = () => {
 					through the cites of the word in classical literature, discovered the
 					undoubtable source. Lorem Ipsum comes from sections{" "}
 					<BootstrapTooltip title="You hovered over the 1.10.32">
-						<a href="#">1.10.32</a>
+						<a href="javascript:void(0)">1.10.32</a>
 					</BootstrapTooltip>{" "}
 					and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good
 					and Evil) by Cicero, written in 45 BC. This book is a treatise on the
