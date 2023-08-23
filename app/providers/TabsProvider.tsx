@@ -27,6 +27,7 @@ import ModalDialogs from "@/app/components/tabs/windows/pages/ModalDialogs";
 import Accordian from "@/app/components/tabs/widgets/pages/Accordian";
 import AutoComplete from "../components/tabs/widgets/pages/AutoComplete";
 import DatePicker from "../components/tabs/widgets/pages/DatePicker";
+import Slider from "../components/tabs/widgets/pages/Slider";
 
 interface Tab {
 	id: number;
@@ -179,6 +180,13 @@ const tabs: TabsProps = {
 			icon: <HtmlIcon />,
 			label: "Date Picker",
 			page: <DatePicker />
+		},
+		{
+			id: 19,
+			id_link: "slider_page",
+			icon: <HtmlIcon />,
+			label: "Slider",
+			page: <Slider />
 		},
 		{
 			id: 9999,
