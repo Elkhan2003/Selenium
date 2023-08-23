@@ -49,7 +49,7 @@ const ProgressBar: FC = () => {
 
 	return (
 		<>
-			<div>ProgressBar</div>
+			<h1>Beta Test (Progress Bar update coming soon)</h1>
 			<div>
 				<progress
 					value={progress}
