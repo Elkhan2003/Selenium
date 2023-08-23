@@ -30,6 +30,7 @@ import DatePicker from "@/app/components/tabs/widgets/pages/DatePicker";
 import Slider from "@/app/components/tabs/widgets/pages/Slider";
 import ProgressBar from "@/app/components/tabs/widgets/pages/ProgressBar";
 import Tabs from "@/app/components/tabs/widgets/pages/Tabs";
+import ToolTips from "@/app/components/tabs/widgets/pages/ToolTips";
 
 interface Tab {
 	id: number;
@@ -203,6 +204,13 @@ const tabs: TabsProps = {
 			icon: <HtmlIcon />,
 			label: "Tabs",
 			page: <Tabs />
+		},
+		{
+			id: 22,
+			id_link: "toolTips_page",
+			icon: <HtmlIcon />,
+			label: "Tool Tips",
+			page: <ToolTips />
 		},
 		{
 			id: 9999,
