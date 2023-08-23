@@ -29,6 +29,7 @@ import AutoComplete from "@/app/components/tabs/widgets/pages/AutoComplete";
 import DatePicker from "@/app/components/tabs/widgets/pages/DatePicker";
 import Slider from "@/app/components/tabs/widgets/pages/Slider";
 import ProgressBar from "@/app/components/tabs/widgets/pages/ProgressBar";
+import Tabs from "@/app/components/tabs/widgets/pages/Tabs";
 
 interface Tab {
 	id: number;
@@ -195,6 +196,13 @@ const tabs: TabsProps = {
 			icon: <HtmlIcon />,
 			label: "Progress Bar",
 			page: <ProgressBar />
+		},
+		{
+			id: 21,
+			id_link: "tabs_page",
+			icon: <HtmlIcon />,
+			label: "Tabs",
+			page: <Tabs />
 		},
 		{
 			id: 9999,
