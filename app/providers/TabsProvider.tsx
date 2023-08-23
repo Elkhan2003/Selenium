@@ -25,9 +25,10 @@ import Frames from "@/app/components/tabs/windows/pages/Frames";
 import NestedFrames from "@/app/components/tabs/windows/pages/NestedFrames";
 import ModalDialogs from "@/app/components/tabs/windows/pages/ModalDialogs";
 import Accordian from "@/app/components/tabs/widgets/pages/Accordian";
-import AutoComplete from "../components/tabs/widgets/pages/AutoComplete";
-import DatePicker from "../components/tabs/widgets/pages/DatePicker";
-import Slider from "../components/tabs/widgets/pages/Slider";
+import AutoComplete from "@/app/components/tabs/widgets/pages/AutoComplete";
+import DatePicker from "@/app/components/tabs/widgets/pages/DatePicker";
+import Slider from "@/app/components/tabs/widgets/pages/Slider";
+import ProgressBar from "@/app/components/tabs/widgets/pages/ProgressBar";
 
 interface Tab {
 	id: number;
@@ -187,6 +188,13 @@ const tabs: TabsProps = {
 			icon: <HtmlIcon />,
 			label: "Slider",
 			page: <Slider />
+		},
+		{
+			id: 20,
+			id_link: "progressBar_page",
+			icon: <HtmlIcon />,
+			label: "Progress Bar",
+			page: <ProgressBar />
 		},
 		{
 			id: 9999,
