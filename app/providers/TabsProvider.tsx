@@ -31,6 +31,7 @@ import Slider from "@/app/components/tabs/widgets/pages/Slider";
 import ProgressBar from "@/app/components/tabs/widgets/pages/ProgressBar";
 import Tabs from "@/app/components/tabs/widgets/pages/Tabs";
 import ToolTips from "@/app/components/tabs/widgets/pages/ToolTips";
+import Menu from "@/app/components/tabs/widgets/pages/Menu";
 
 interface Tab {
 	id: number;
@@ -211,6 +212,13 @@ const tabs: TabsProps = {
 			icon: <HtmlIcon />,
 			label: "Tool Tips",
 			page: <ToolTips />
+		},
+		{
+			id: 23,
+			id_link: "menu_page",
+			icon: <HtmlIcon />,
+			label: "Menu",
+			page: <Menu />
 		},
 		{
 			id: 9999,
