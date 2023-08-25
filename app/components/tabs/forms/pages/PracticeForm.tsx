@@ -449,7 +449,7 @@ const PracticeForm: FC = () => {
 						<div className={`${scss.select__inputs} ${scss.userFormWidth}`}>
 							<Autocomplete
 								fullWidth
-								id="select_1"
+								id="react-select-6-input"
 								{...register("state", {
 									required: false
 								})}
@@ -470,7 +470,7 @@ const PracticeForm: FC = () => {
 							<Autocomplete
 								fullWidth
 								disabled={!select.state}
-								id="select_2"
+								id="react-select-7-input"
 								size="small"
 								options={cityOptions}
 								getOptionLabel={(option) => option}

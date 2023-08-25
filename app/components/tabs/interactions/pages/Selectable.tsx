@@ -14,7 +14,7 @@ const data = [
 const Selectable: FC = () => {
 	const [selected, setSelected] = useState<Array<boolean>>(
 		Array(data.length).fill(false)
-	); // Указываем тип
+	);
 
 	const handleToggle = (index: number) => {
 		const newSelected = [...selected];
