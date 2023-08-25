@@ -18,8 +18,7 @@ import {
 	TableContainer,
 	TableRow,
 	Paper,
-	TableHead,
-	Autocomplete
+	TableHead
 } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useForm } from "react-hook-form";
@@ -50,10 +49,13 @@ interface optionType {
 }
 
 const options: optionType[] = [
-	{ value: "California", words: ["Los Angeles", "San Francisco", "San Diego"] },
-	{ value: "New York", words: ["New York City", "Buffalo", "Rochester"] },
-	{ value: "Texas", words: ["Houston", "Dallas", "Austin"] },
-	{ value: "Florida", words: ["Miami", "Orlando", "Tampa"] }
+	{ value: "NCR", words: ["Delhi", "Gurgaon", "Noida"] },
+	{
+		value: "Uttar Pradesh",
+		words: ["Agra", "Lucknow", "Merrut"]
+	},
+	{ value: "Haryana", words: ["Karnal", "Panipat"] },
+	{ value: "rajasthan", words: ["Jaipur", "Jaiselmer"] }
 ];
 
 const PracticeForm: FC = () => {
@@ -81,7 +83,7 @@ const PracticeForm: FC = () => {
 		{ label: "Address", value: uploadedModal?.currentAddress },
 		{
 			label: "State and City",
-			value: `${uploadedModal?.state}, ${uploadedModal?.city}`
+			value: uploadedModal?.state + " " + uploadedModal?.city
 		}
 	];
 
@@ -125,36 +127,27 @@ const PracticeForm: FC = () => {
 		state: "",
 		city: ""
 	});
+
 	const [cityOptions, setCityOptions] = useState<string[]>([]);
 
-	const handleStateChange = (
-		event: React.ChangeEvent<{}>,
-		newValue: optionType | null
-	) => {
-		if (newValue) {
-			setCityOptions(
-				options.find((option) => option.value === newValue.value)?.words || []
-			);
-			setSelect((prevState) => ({
-				...prevState,
-				state: newValue.value,
-				city: ""
-			}));
-		} else {
-			setCityOptions([]);
-			setSelect((prevState) => ({ ...prevState, state: "", city: "" }));
+	const handleChange = (event: SelectChangeEvent) => {
+		const { name, value } = event.target;
+		const selectedOption = options.find((option) => option.value === value);
+
+		if (selectedOption) {
+			setSelect({
+				...select,
+				[name]: value
+			});
+			setCityOptions(selectedOption.words);
 		}
 	};
 
-	const handleCityChange = (
-		event: React.ChangeEvent<{}>,
-		newValue: string | null
-	) => {
-		if (newValue) {
-			setSelect((prevState) => ({ ...prevState, city: newValue }));
-		} else {
-			setSelect((prevState) => ({ ...prevState, city: "" }));
-		}
+	const handleCityChange = (event: SelectChangeEvent) => {
+		setSelect({
+			...select,
+			city: event.target.value as string
+		});
 	};
 
 	return (
@@ -447,44 +440,50 @@ const PracticeForm: FC = () => {
 							</label>
 						</div>
 						<div className={`${scss.select__inputs} ${scss.userFormWidth}`}>
-							<Autocomplete
-								fullWidth
-								id="select_1"
-								{...register("state", {
-									required: false
-								})}
-								size="small"
-								options={options}
-								getOptionLabel={(option) => option.value}
-								onChange={handleStateChange}
-								renderInput={(params) => (
-									<TextField
-										{...params}
-										label="Select State"
-										{...register("state", {
-											required: false
-										})}
-									/>
-								)}
-							/>
-							<Autocomplete
-								fullWidth
-								disabled={!select.state}
-								id="select_2"
-								size="small"
-								options={cityOptions}
-								getOptionLabel={(option) => option}
-								onChange={handleCityChange}
-								renderInput={(params) => (
-									<TextField
-										{...params}
-										label="Select City"
-										{...register("city", {
-											required: false
-										})}
-									/>
-								)}
-							/>
+							<FormControl fullWidth>
+								<InputLabel id="select_1" size="small">
+									Select State
+								</InputLabel>
+								<Select
+									size="small"
+									labelId="select_1"
+									id="select_1"
+									{...register("state", {
+										required: false
+									})}
+									value={select.state}
+									label="Select State"
+									onChange={handleChange}
+								>
+									{options.map((option, index) => (
+										<MenuItem key={index + 1} value={option.value}>
+											{option.value}
+										</MenuItem>
+									))}
+								</Select>
+							</FormControl>
+							<FormControl fullWidth disabled={!select.state}>
+								<InputLabel id="select_2" size="small">
+									Select City
+								</InputLabel>
+								<Select
+									size="small"
+									labelId="select_2"
+									id="select_2"
+									{...register("city", {
+										required: false
+									})}
+									value={select.city}
+									label="Select City"
+									onChange={handleCityChange}
+								>
+									{cityOptions.map((word) => (
+										<MenuItem key={word} value={word}>
+											{word}
+										</MenuItem>
+									))}
+								</Select>
+							</FormControl>
 						</div>
 					</div>
 

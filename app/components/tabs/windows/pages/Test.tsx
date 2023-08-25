@@ -1,163 +1,87 @@
 import React, { FC, useState } from "react";
-import scss from "./Windows.module.scss";
-import { useForm } from "react-hook-form";
-import {
-	Button,
-	Dialog,
-	Table,
-	TableBody,
-	TableCell,
-	TableContainer,
-	TableRow,
-	Paper,
-	TableHead,
-	TextField
-} from "@mui/material";
+import { Autocomplete, Stack, TextField } from "@mui/material";
 
-interface FormData {
-	firstName: string;
-	lastName: string;
-	uploadPicture: FileList;
+interface selectType {
+	state: string;
+	city: string;
 }
 
+interface optionType {
+	value: string;
+	words: string[];
+}
+
+const options: optionType[] = [
+	{ value: "California", words: ["Los Angeles", "San Francisco", "San Diego"] },
+	{ value: "New York", words: ["New York City", "Buffalo", "Rochester"] },
+	{ value: "Texas", words: ["Houston", "Dallas", "Austin"] },
+	{ value: "Florida", words: ["Miami", "Orlando", "Tampa"] }
+];
+
 const Test: FC = () => {
-	const [open, setOpen] = useState(false);
-	const [uploadedModal, setUploadedModal] = useState<FormData | null>(null); // Specify the type here
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-		reset
-	} = useForm<FormData>();
+	const [select, setSelect] = useState<selectType>({
+		state: "",
+		city: ""
+	});
+	const [cityOptions, setCityOptions] = useState<string[]>([]);
 
-	const modalResult = [
-		{
-			label: "Student Name",
-			value: uploadedModal?.firstName + " " + uploadedModal?.lastName
-		},
-		{ label: "Student Email", value: "elcho911@gmail.com" },
-		{ label: "Gender", value: "Male" },
-		{ label: "Mobile", value: "9903850565" },
-		{ label: "Date of Birth", value: "15 August, 2023" },
-		{ label: "Subjects", value: "" },
-		{ label: "Hobbies", value: "" },
-		{ label: "Picture", value: uploadedModal?.uploadPicture?.[0]?.name },
-		{ label: "Address", value: "" },
-		{ label: "State and City", value: "" }
-	];
+	const handleStateChange = (
+		event: React.ChangeEvent<{}>,
+		newValue: optionType | null
+	) => {
+		if (newValue) {
+			setCityOptions(
+				options.find((option) => option.value === newValue.value)?.words || []
+			);
+			setSelect((prevState) => ({
+				...prevState,
+				state: newValue.value,
+				city: ""
+			}));
+		} else {
+			setCityOptions([]);
+			setSelect((prevState) => ({ ...prevState, state: "", city: "" }));
+		}
+	};
 
-	const sendData = async (data: FormData) => {
-		try {
-			const titles = {
-				firstName: data.firstName,
-				lastName: data.lastName,
-				uploadPicture: data.uploadPicture[0].name
-			};
-
-			setUploadedModal(data);
-			console.log(titles);
-			setOpen(true);
-		} catch (error) {
-			console.error("Error occurred while sending the POST request:", error);
+	const handleCityChange = (
+		event: React.ChangeEvent<{}>,
+		newValue: string | null
+	) => {
+		if (newValue) {
+			setSelect((prevState) => ({ ...prevState, city: newValue }));
+		} else {
+			setSelect((prevState) => ({ ...prevState, city: "" }));
 		}
 	};
 
 	return (
 		<>
-			<Dialog open={open}>
-				<div className={scss.modal}>
-					<h1>Thanks for submitting the form</h1>
-					<div className={scss.table__container}>
-						<TableContainer component={Paper}>
-							<Table>
-								<TableHead>
-									<TableRow>
-										<TableCell>
-											<h3>Label</h3>
-										</TableCell>
-										<TableCell>
-											<h3>Values</h3>
-										</TableCell>
-									</TableRow>
-								</TableHead>
-								<TableBody>
-									{modalResult.map((item, index) => (
-										<TableRow key={index + 1}>
-											<TableCell>{item.label}</TableCell>
-											<TableCell>{item.value}</TableCell>
-										</TableRow>
-									))}
-								</TableBody>
-							</Table>
-						</TableContainer>
-					</div>
-
-					<div className={scss.button}>
-						<Button
-							id="close"
-							variant="contained"
-							size="medium"
-							color="error"
-							onClick={() => {
-								setOpen(false);
-								reset();
-							}}
-						>
-							Close
-						</Button>
-					</div>
-				</div>
-			</Dialog>
-
-			<form className={scss.form} onSubmit={handleSubmit(sendData)}>
-				<div className={`${scss.name__inputs} ${scss.userFormWidth}`}>
-					<TextField
-						{...(errors.firstName && {
-							error: true
-						})}
-						fullWidth
-						variant="outlined"
+			<div>
+				<Stack spacing={2} sx={{ width: 500 }}>
+					<Autocomplete
+						id="select_1"
 						size="small"
-						type="text"
-						id="firstName"
-						label="First Name"
-						{...register("firstName", { required: true, minLength: 2 })}
+						options={options}
+						getOptionLabel={(option) => option.value}
+						onChange={handleStateChange}
+						renderInput={(params) => (
+							<TextField {...params} label="Select State" />
+						)}
 					/>
-					<TextField
-						{...(errors.lastName && {
-							error: true
-						})}
-						fullWidth
-						variant="outlined"
+					<Autocomplete
+						disabled={!select.state}
+						id="select_2"
 						size="small"
-						type="text"
-						id="lastName"
-						label="Last Name"
-						{...register("lastName", { required: true, minLength: 2 })}
+						options={cityOptions}
+						getOptionLabel={(option) => option}
+						onChange={handleCityChange}
+						renderInput={(params) => (
+							<TextField {...params} label="Select City" />
+						)}
 					/>
-				</div>
-
-				<div className={`${scss.userPicture} ${scss.userFormFlex}`}>
-					<div className={scss.label}>
-						<label id="subjects-label" htmlFor="uploadPicture">
-							Picture
-						</label>
-					</div>
-					<div className={`${scss.select__picture} ${scss.userFormWidth}`}>
-						<label htmlFor="uploadPicture">Select picture</label>
-						<input
-							id="uploadPicture"
-							type="file"
-							lang="en"
-							{...register("uploadPicture")}
-						></input>
-					</div>
-				</div>
-
-				<Button id="submit" type="submit" variant="contained" size="medium">
-					Submit
-				</Button>
-			</form>
+				</Stack>
+			</div>
 		</>
 	);
 };
