@@ -21,6 +21,7 @@ import { Elements } from "../tabs/elements";
 import { Forms } from "../tabs/forms";
 import { Windows } from "../tabs/windows";
 import { Widgets } from "../tabs/widgets";
+import { Interactions } from "../tabs/interactions";
 
 interface AccordionItem {
 	panel: string;
@@ -69,7 +70,7 @@ const SeleniumPage: FC = () => {
 			panel: "panel5",
 			icon: <InteractionsIcon />,
 			header: "Interactions",
-			content: "Lorem ipsum dolor sit amet, consectetur adip"
+			content: <Interactions />
 		},
 		{
 			panel: "panel6",
@@ -115,6 +116,15 @@ const SeleniumPage: FC = () => {
 				)}
 
 				{tabs.widgets.map(
+					(tab, index) =>
+						activeTab === tab.id && (
+							<p key={index + 1} className={scss.tab__content}>
+								{tab.label}
+							</p>
+						)
+				)}
+
+				{tabs.interactions.map(
 					(tab, index) =>
 						activeTab === tab.id && (
 							<p key={index + 1} className={scss.tab__content}>
@@ -176,6 +186,15 @@ const SeleniumPage: FC = () => {
 				)}
 
 				{tabs.widgets.map(
+					(tab, index) =>
+						activeTab === tab.id && (
+							<div key={index + 1} className={scss.tab__content}>
+								{tab.page}
+							</div>
+						)
+				)}
+
+				{tabs.interactions.map(
 					(tab, index) =>
 						activeTab === tab.id && (
 							<div key={index + 1} className={scss.tab__content}>

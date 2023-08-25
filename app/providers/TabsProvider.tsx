@@ -32,6 +32,7 @@ import ProgressBar from "@/app/components/tabs/widgets/pages/ProgressBar";
 import Tabs from "@/app/components/tabs/widgets/pages/Tabs";
 import ToolTips from "@/app/components/tabs/widgets/pages/ToolTips";
 import Menu from "@/app/components/tabs/widgets/pages/Menu";
+import Sortable from "../components/tabs/interactions/pages/Sortable";
 
 interface Tab {
 	id: number;
@@ -46,6 +47,7 @@ interface TabsProps {
 	forms: Tab[];
 	windows: Tab[];
 	widgets: Tab[];
+	interactions: Tab[]
 }
 
 const tabs: TabsProps = {
@@ -219,6 +221,16 @@ const tabs: TabsProps = {
 			icon: <HtmlIcon />,
 			label: "Menu",
 			page: <Menu />
+		}
+	],
+
+	interactions:[
+		{
+			id: 24,
+			id_link: "sortable_page",
+			icon: <HtmlIcon />,
+			label: "Sortable",
+			page: <Sortable />
 		},
 		{
 			id: 9999,
