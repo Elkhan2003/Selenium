@@ -19,3 +19,17 @@
 		cursor: grabbing;
 	}
 }
+
+// ! Selectable
+.Selectable {
+	.button {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+		width: 100%;
+
+    span{
+      margin-left: 10px;
+    }
+	}
+}

@@ -32,7 +32,8 @@ import ProgressBar from "@/app/components/tabs/widgets/pages/ProgressBar";
 import Tabs from "@/app/components/tabs/widgets/pages/Tabs";
 import ToolTips from "@/app/components/tabs/widgets/pages/ToolTips";
 import Menu from "@/app/components/tabs/widgets/pages/Menu";
-import Sortable from "../components/tabs/interactions/pages/Sortable";
+import Sortable from "@/app/components/tabs/interactions/pages/Sortable";
+import Selectable from "@/app/components/tabs/interactions/pages/Selectable";
 
 interface Tab {
 	id: number;
@@ -231,6 +232,13 @@ const tabs: TabsProps = {
 			icon: <HtmlIcon />,
 			label: "Sortable",
 			page: <Sortable />
+		},
+		{
+			id: 25,
+			id_link: "selectable_page",
+			icon: <HtmlIcon />,
+			label: "Selectable",
+			page: <Selectable />
 		},
 		{
 			id: 9999,
