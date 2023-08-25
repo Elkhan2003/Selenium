@@ -8,7 +8,7 @@ import React, {
 	useEffect
 } from "react";
 import { HtmlIcon } from "@/app/components/svgs";
-import Test from "@/app/components/tabs/windows/pages/Test";
+import Test from "@/app/components/tabs/interactions/pages/Test";
 import TextBox from "@/app/components/tabs/elements/pages/TextBox";
 import CheckBox from "@/app/components/tabs/elements/pages/CheckBox";
 import RadioButton from "@/app/components/tabs/elements/pages/RadioButton";

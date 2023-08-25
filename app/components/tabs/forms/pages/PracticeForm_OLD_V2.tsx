@@ -63,8 +63,6 @@ const PracticeForm: FC = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-		setValue,
-		watch,
 		reset
 	} = useForm<FormData>();
 
@@ -123,10 +121,41 @@ const PracticeForm: FC = () => {
 	};
 
 	// ! Select
-	const selectedState = watch("state");
-	const cityOptions = selectedState
-		? options.find((option) => option.value === selectedState)?.words || []
-		: [];
+	const [select, setSelect] = useState<selectType>({
+		state: "",
+		city: ""
+	});
+	const [cityOptions, setCityOptions] = useState<string[]>([]);
+
+	const handleStateChange = (
+		event: React.ChangeEvent<{}>,
+		newValue: optionType | null
+	) => {
+		if (newValue) {
+			setCityOptions(
+				options.find((option) => option.value === newValue.value)?.words || []
+			);
+			setSelect((prevState) => ({
+				...prevState,
+				state: newValue.value,
+				city: ""
+			}));
+		} else {
+			setCityOptions([]);
+			setSelect((prevState) => ({ ...prevState, state: "", city: "" }));
+		}
+	};
+
+	const handleCityChange = (
+		event: React.ChangeEvent<{}>,
+		newValue: string | null
+	) => {
+		if (newValue) {
+			setSelect((prevState) => ({ ...prevState, city: newValue }));
+		} else {
+			setSelect((prevState) => ({ ...prevState, city: "" }));
+		}
+	};
 
 	return (
 		<>
@@ -418,39 +447,41 @@ const PracticeForm: FC = () => {
 							</label>
 						</div>
 						<div className={`${scss.select__inputs} ${scss.userFormWidth}`}>
-							<div id="state">
-								<select
-									id="react-select-6-input"
-									{...register("state")}
-									defaultValue=""
-									onChange={(e) => {
-										setValue("state", e.target.value);
-										setValue("city", "");
-									}}
-								>
-									<option value="">Select State</option>
-									{options.map((option) => (
-										<option key={option.value} value={option.value}>
-											{option.value}
-										</option>
-									))}
-								</select>
-							</div>
-							<div id="city">
-								<select
-									disabled={!selectedState}
-									id="react-select-7-input"
-									{...register("city")}
-									defaultValue=""
-								>
-									<option value="">Select City</option>
-									{cityOptions.map((city) => (
-										<option key={city} value={city}>
-											{city}
-										</option>
-									))}
-								</select>
-							</div>
+							<Autocomplete
+								fullWidth
+								id="react-select-6-input"
+								size="small"
+								options={options}
+								getOptionLabel={(option) => option.value}
+								onChange={handleStateChange}
+								renderInput={(params) => (
+									<TextField
+										{...params}
+										label="Select State"
+										{...register("state", {
+											required: false
+										})}
+									/>
+								)}
+							/>
+							<Autocomplete
+								fullWidth
+								disabled={!select.state}
+								id="react-select-7-input"
+								size="small"
+								options={cityOptions}
+								getOptionLabel={(option) => option}
+								onChange={handleCityChange}
+								renderInput={(params) => (
+									<TextField
+										{...params}
+										label="Select City"
+										{...register("city", {
+											required: false
+										})}
+									/>
+								)}
+							/>
 						</div>
 					</div>
 
