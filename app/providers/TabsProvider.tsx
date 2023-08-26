@@ -32,7 +32,7 @@ import ProgressBar from "@/app/components/tabs/widgets/pages/ProgressBar";
 import Tabs from "@/app/components/tabs/widgets/pages/Tabs";
 import ToolTips from "@/app/components/tabs/widgets/pages/ToolTips";
 import Menu from "@/app/components/tabs/widgets/pages/Menu";
-import SelectMenu from "@/app/components/tabs/interactions/pages/SelectMenu";
+import SelectMenu from "@/app/components/tabs/widgets/pages/SelectMenu";
 import Sortable from "@/app/components/tabs/interactions/pages/Sortable";
 import Selectable from "@/app/components/tabs/interactions/pages/Selectable";
 

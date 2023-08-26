@@ -4,3 +4,20 @@
 		margin-top: 15px;
 	}
 }
+
+// ! SelectMenu
+.SelectMenu {
+	width: 100%;
+	max-width: 300px;
+
+	.block {
+		margin-bottom: 25px;
+		.title {
+			margin-bottom: 10px;
+		}
+		option,
+		select {
+			font-size: 16px;
+		}
+	}
+}
