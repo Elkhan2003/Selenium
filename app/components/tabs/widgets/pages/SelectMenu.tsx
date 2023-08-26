@@ -14,10 +14,10 @@ const SelectMenu: FC = () => {
 	return (
 		<>
 			<div id="selectMenuContainer" className={scss.SelectMenu}>
-				<div className={scss.block}>
+				<div id="withOptGroup" className={scss.block}>
 					<p className={scss.title}>Select Value</p>
 					<Autocomplete
-						id="withOptGroup"
+						id="react-select-8-input"
 						size="small"
 						options={options.sort(
 							(a, b) => -b.firstLetter.localeCompare(a.firstLetter)
@@ -30,11 +30,11 @@ const SelectMenu: FC = () => {
 						)}
 					/>
 				</div>
-				<div className={scss.block}>
+				<div id="selectOne" className={scss.block}>
 					<p className={scss.title}>Select One</p>
 					<Autocomplete
 						disablePortal
-						id="selectOne"
+						id="react-select-9-input"
 						size="small"
 						options={top100Films}
 						getOptionLabel={(option) => option.title}
@@ -64,7 +64,7 @@ const SelectMenu: FC = () => {
 					<h3 className={scss.title}>Multiselect drop down</h3>
 					<Autocomplete
 						multiple
-						id="react-select-4-input"
+						id="react-select-10-input"
 						size="small"
 						options={data}
 						getOptionLabel={(option) => option.title}
