@@ -1,4 +1,5 @@
 import React, { FC, useState, useEffect } from "react";
+import scss from "./Widgets.module.scss";
 import { Button } from "@mui/material";
 
 const ProgressBar: FC = () => {
@@ -20,7 +21,7 @@ const ProgressBar: FC = () => {
 						return prevProgress;
 					}
 				});
-			}, 25);
+			}, 30);
 		}
 
 		return () => {
@@ -49,8 +50,8 @@ const ProgressBar: FC = () => {
 
 	return (
 		<>
-			<h1>Beta Test (Progress Bar update coming soon)</h1>
-			<div>
+			<div className={scss.ProgressBar}>
+				<p>Progress Bar</p>
 				<progress
 					value={progress}
 					max={100}
@@ -59,7 +60,12 @@ const ProgressBar: FC = () => {
 					}}
 				/>
 				{progress === 100 ? (
-					<Button variant="contained" size="medium" onClick={handleResetClick}>
+					<Button
+						id="resetButton"
+						variant="contained"
+						size="medium"
+						onClick={handleResetClick}
+					>
 						Reset
 					</Button>
 				) : (
