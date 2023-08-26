@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import scss from "./Windows.module.scss";
 
-const Frames: FC = () => {
+const Iframes: FC = () => {
 	return (
 		<>
 			<div id="framesWrapper" className={scss.Frames}>
@@ -34,4 +34,4 @@ const Frames: FC = () => {
 	);
 };
 
-export default Frames;
+export default Iframes;

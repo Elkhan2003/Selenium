@@ -21,7 +21,7 @@ import DynamicProperties from "@/app/components/tabs/elements/pages/DynamicPrope
 import PracticeForm from "@/app/components/tabs/forms/pages/PracticeForm";
 import BrowserWindows from "@/app/components/tabs/windows/pages/BrowserWindows";
 import Alerts from "@/app/components/tabs/windows/pages/Alerts";
-import Frames from "@/app/components/tabs/windows/pages/Frames";
+import Iframes from "@/app/components/tabs/windows/pages/Iframes";
 import NestedFrames from "@/app/components/tabs/windows/pages/NestedFrames";
 import ModalDialogs from "@/app/components/tabs/windows/pages/ModalDialogs";
 import Accordian from "@/app/components/tabs/widgets/pages/Accordian";
@@ -145,16 +145,16 @@ const tabs: TabsProps = {
 		},
 		{
 			id: 13,
-			id_link: "frames_page",
+			id_link: "iframes_page",
 			icon: <HtmlIcon />,
-			label: "Frames",
-			page: <Frames />
+			label: "Iframes",
+			page: <Iframes />
 		},
 		{
 			id: 14,
 			id_link: "nestedFrames_page",
 			icon: <HtmlIcon />,
-			label: "Nested Frames",
+			label: "Nested Iframes",
 			page: <NestedFrames />
 		},
 		{
