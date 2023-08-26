@@ -32,6 +32,7 @@ import ProgressBar from "@/app/components/tabs/widgets/pages/ProgressBar";
 import Tabs from "@/app/components/tabs/widgets/pages/Tabs";
 import ToolTips from "@/app/components/tabs/widgets/pages/ToolTips";
 import Menu from "@/app/components/tabs/widgets/pages/Menu";
+import SelectMenu from "@/app/components/tabs/interactions/pages/SelectMenu";
 import Sortable from "@/app/components/tabs/interactions/pages/Sortable";
 import Selectable from "@/app/components/tabs/interactions/pages/Selectable";
 
@@ -222,19 +223,26 @@ const tabs: TabsProps = {
 			icon: <HtmlIcon />,
 			label: "Menu",
 			page: <Menu />
-		}
+		},
+		{
+			id: 24,
+			id_link: "selectMenu_page",
+			icon: <HtmlIcon />,
+			label: "SelectMenu",
+			page: <SelectMenu />
+		},
 	],
 
 	interactions:[
 		{
-			id: 24,
+			id: 25,
 			id_link: "sortable_page",
 			icon: <HtmlIcon />,
 			label: "Sortable",
 			page: <Sortable />
 		},
 		{
-			id: 25,
+			id: 26,
 			id_link: "selectable_page",
 			icon: <HtmlIcon />,
 			label: "Selectable",
