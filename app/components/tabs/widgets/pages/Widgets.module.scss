@@ -5,6 +5,70 @@
 	}
 }
 
+// ! Menu
+.Menu {
+	.nav {
+		list-style: none inside;
+		margin: 0;
+		padding: 0;
+		text-align: center;
+
+		li {
+			display: block;
+			position: relative;
+			float: left;
+			background: #24af15;
+
+			&:hover {
+				background: #003f20;
+
+				> ul {
+					display: block;
+				}
+			}
+
+			ul {
+				display: none;
+				position: absolute;
+				padding: 0;
+				left: 0;
+				top: 35px;
+				background: #24af15;
+
+				li {
+					&:hover {
+						ul {
+							display: block;
+							margin-left: 200px;
+							margin-top: -35px;
+						}
+					}
+				}
+
+				a {
+					display: block;
+					padding: 0;
+					text-decoration: none;
+					width: 200px;
+					line-height: 35px;
+					font-size: 14px;
+					color: #ffffff;
+				}
+			}
+
+			a {
+				display: block;
+				padding: 0;
+				text-decoration: none;
+				width: 200px;
+				line-height: 35px;
+				font-size: 14px;
+				color: #ffffff;
+			}
+		}
+	}
+}
+
 // ! SelectMenu
 .SelectMenu {
 	width: 100%;
