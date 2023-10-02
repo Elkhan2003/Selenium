@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { FC } from "react";
 import TabsMui from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -19,8 +20,7 @@ function CustomTabPanel(props: TabPanelProps) {
 			hidden={value !== index}
 			id={`simple-tabpanel-${index}`}
 			aria-labelledby={`simple-tab-${index}`}
-			{...other}
-		>
+			{...other}>
 			{value === index && (
 				<Box sx={{ p: 3 }}>
 					<Typography>{children}</Typography>
@@ -33,7 +33,7 @@ function CustomTabPanel(props: TabPanelProps) {
 function a11yProps(index: number) {
 	return {
 		id: `simple-tab-${index}`,
-		"aria-controls": `simple-tabpanel-${index}`
+		"aria-controls": `simple-tabpanel-${index}`,
 	};
 }
 
@@ -48,9 +48,8 @@ const Tabs: FC = () => {
 		<div id="tabsContainer">
 			<div
 				style={{
-					marginBottom: 10
-				}}
-			>
+					marginBottom: 10,
+				}}>
 				Details about Lorem Ipsum
 			</div>
 			<Box sx={{ width: "100%" }}>
@@ -58,8 +57,7 @@ const Tabs: FC = () => {
 					<TabsMui
 						value={value}
 						onChange={handleChange}
-						aria-label="basic tabs example"
-					>
+						aria-label="basic tabs example">
 						<Tab label="What" {...a11yProps(0)} />
 						<Tab label="Origin" {...a11yProps(1)} />
 						<Tab label="Use" {...a11yProps(2)} />

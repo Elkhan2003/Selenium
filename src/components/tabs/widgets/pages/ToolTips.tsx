@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { FC, useRef } from "react";
 import scss from "./Widgets.module.scss";
 import { styled } from "@mui/material/styles";

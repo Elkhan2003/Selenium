@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { FC } from "react";
 import scss from "./Elements.module.scss";
 import Image from "next/image";

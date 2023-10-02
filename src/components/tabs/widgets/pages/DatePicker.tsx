@@ -37,7 +37,7 @@ const DatePicker: FC = () => {
 					defaultValue={date}
 					onChange={handleDateChange}
 					InputLabelProps={{
-						shrink: true
+						shrink: true,
 					}}
 				/>
 				<TextField
@@ -50,7 +50,7 @@ const DatePicker: FC = () => {
 					defaultValue={dateTime}
 					onChange={handleDateTimeChange}
 					InputLabelProps={{
-						shrink: true
+						shrink: true,
 					}}
 				/>
 			</Stack>

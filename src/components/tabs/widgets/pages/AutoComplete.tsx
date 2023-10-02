@@ -111,5 +111,5 @@ const data = [
 	{ title: "Marigold" },
 	{ title: "Charcoal" },
 	{ title: "Platinum" },
-	{ title: "Amethyst" }
+	{ title: "Amethyst" },
 ];
