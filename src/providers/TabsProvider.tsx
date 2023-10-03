@@ -8,7 +8,8 @@ import React, {
 	useEffect,
 } from "react";
 import { HtmlIcon } from "../svgs";
-import Test from "@/src/components/tabs/interactions/pages/Test";
+// ! Test
+// import Test from "@/src/components/tabs/interactions/pages/Test";
 import TextBox from "@/src/components/tabs/elements/pages/TextBox";
 import CheckBox from "@/src/components/tabs/elements/pages/CheckBox";
 import RadioButton from "@/src/components/tabs/elements/pages/RadioButton";
@@ -248,13 +249,14 @@ const tabs: TabsProps = {
 			label: "Selectable",
 			page: <Selectable />,
 		},
-		{
-			id: 9999,
-			id_link: "test_page",
-			icon: <HtmlIcon />,
-			label: "Test",
-			page: <Test />,
-		},
+		// ! Test
+		// {
+		// 	id: 9999,
+		// 	id_link: "test_page",
+		// 	icon: <HtmlIcon />,
+		// 	label: "Test",
+		// 	page: <Test />,
+		// },
 	],
 };
 

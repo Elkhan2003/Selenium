@@ -10,7 +10,8 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import scss from "./Style.module.scss";
 import { useTabs } from "@/src/hooks/useTabs";
 import {
-	BookIcon,
+	// BookIcon,
+
 	BurgerIcon,
 	FormIcon,
 	InteractionsIcon,
@@ -72,12 +73,13 @@ const SeleniumPage: FC = () => {
 			header: "Interactions",
 			content: <Interactions />,
 		},
-		{
-			panel: "panel6",
-			icon: <BookIcon />,
-			header: "Book Store Application",
-			content: "Lorem ipsum dolor sit amet, consectetur adip",
-		},
+		// ! Book Store Application
+		// {
+		// 	panel: "panel6",
+		// 	icon: <BookIcon />,
+		// 	header: "Book Store Application",
+		// 	content: "Lorem ipsum dolor sit amet, consectetur adip",
+		// },
 	];
 
 	const handleChange =
