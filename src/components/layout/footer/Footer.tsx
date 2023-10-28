@@ -5,10 +5,11 @@ const Footer: FC = () => {
 	return (
 		<div className={scss.footer}>
 			<p>
-				© 2018-2023 WEDEVX.CO | ALL RIGHTS RESERVED |&nbsp;
+				© 2018-2023 WEDEVX.CO | ALL RIGHTS RESERVED.
+				{/* |&nbsp;
 				<a href="https://www.instagram.com/elcho911/" target="_blank">
 					By Elcho911
-				</a>
+				</a> */}
 			</p>
 		</div>
 	);
